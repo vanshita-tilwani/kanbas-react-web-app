@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Screen</title>
+</head>
+<body>
+<table>
+    <td valign="top">
+        <ul>
+            <li><a href="./profile/main.html">Account</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="./course/main.html">Courses</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Inbox</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Studio</a></li>
+            <li><a href="#">Commons</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </td>
+    <td valign="top">
+        <ul>
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="#">Modules</a></li>
+            <li><a href="#">Piazza</a></li>
+            <li><a href="#">Zoom Meetings</a></li>
+            <li><a href="./assignments/index.html">Assignments</a></li>
+            <li><a href="#">Quizzes</a></li>
+            <li><a href="./grades.html">Grades</a></li>
+            <li><a href="#">People</a></li>
+            <li><a href="#">Panopto Video</a></li>
+            <li><a href="#">Discussions</a></li>
+            <li><a href="#">Announcements</a></li>
+            <li><a href="#">Pages</a></li>
+            <li><a href="#">Files</a></li>
+            <li><a href="#">Rubrics</a></li>
+            <li><a href="#">Outcomes</a></li>
+            <li><a href="#">Collaborations</a></li>
+            <li><a href="#">Syllabus</a></li>
+            <li><a href="./course/details.html">Settings</a></li>
+        </ul>
+    </td>
+    <td>
+        <table>
+            <tr>
+                <form>
+                    <select id="gradebook_selector">
+                        <option value="gradebook" selected>Gradebook</option>
+                    </select>
+                    <button id="import" type="button">Import</button>
+                    <select>
+                        <option value="export" selected>Export</option>
+                    </select>
+                    <button id="configure" type="button">Configure</button>
+                    <label><h2>Student Names</h2></label>
+                    <input id="search_students" type="text" placeholder="Search Students"/><br>
+                    <label><h2>Assignment Names</h2></label>
+                    <input id="search_assignments" type="text" placeholder="Search Assignments"/><br>
+                    <br><input id="apply_filter" type="submit" value="Apply Filters">
+                </form>
+            </tr>
+        </table>
+        <table border="1" style="text-align: center;margin-top:22px;">
+                <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>A1 SETUP  <br> Out of 100</th>
+                    <th>A2 HTML <br> Out of 100</th>
+                    <th>A3 CSS <br> Out of 100</th>
+                    <th>A4 BOOTSTRAP <br> Out of 100</th>
+                    <th>A5 JAVASCRIPT <br> Out of 100</th>
+                    <th>A6 REACT <br> Out of 100</th>
+                    <th>A7 REDUX <br> Out of 100</th>
+                    <th>A8 NODE <br> Out of 100</th>
+                    <th>A9 MONGO <br> Out of 100</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Vanshita Tilwani</td>
+                    <td>99</td>
+                    <td>100</td>
+                    <td>97</td>
+                    <td>95</td>
+                    <td>99</td>
+                    <td>99</td>
+                    <td>100</td>
+                    <td>97</td>
+                    <td>95</td>
+                </tr>
+                <tr>
+                    <td>Sai Teja Marlapati</td>
+                    <td>91</td>
+                    <td>95</td>
+                    <td>98</td>
+                    <td>90</td>
+                    <td>99</td>
+                    <td>91</td>
+                    <td>95</td>
+                    <td>98</td>
+                    <td>90</td>
+                </tr>
+                <tr>
+                    <td>Shanaya Malhotra</td>
+                    <td>80</td>
+                    <td>81</td>
+                    <td>82</td>
+                    <td>83</td>
+                    <td>84</td>
+                    <td>80</td>
+                    <td>81</td>
+                    <td>82</td>
+                    <td>83</td>
+                </tr>
+                <tr>
+                    <td>Mingi Lee</td>
+                    <td>90</td>
+                    <td>91</td>
+                    <td>92</td>
+                    <td>93</td>
+                    <td>94</td>
+                    <td>90</td>
+                    <td>91</td>
+                    <td>92</td>
+                    <td>93</td>
+                </tr>
+                </tbody>
+        </table>
+    </td>
+</table>
+</body>
