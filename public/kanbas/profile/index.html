@@ -1,47 +1,231 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile Screen</title>
-</head>
-<body>
-<table>
-    <td valign="top">
-        <ul>
-            <li><a href="main.html">Account</a></li>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="../course/main.html">Courses</a></li>
-            <li><a href="#">Calendar</a></li>
-            <li><a href="#">Inbox</a></li>
-            <li><a href="#">History</a></li>
-            <li><a href="#">Studio</a></li>
-            <li><a href="#">Commons</a></li>
-            <li><a href="#">Help</a></li>
-        </ul>
-    </td>
-    <td valign="top" width="250px">
-        <ul style="line-height: 22px">
-            <li><a href="#">Notifications</a></li>
-            <li><a href="../profile/index.html">Profile</a></li>
-            <li><a href="#">Files</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">ePortfolios</a></li>
-            <li><a href="#">Shared Content</a></li>
-            <li><a href="#">The Hub</a></li>
-            <li><a href="#">Qwickly Course Tools</a></li>
-            <li><a href="#">Global Announcements</a></li>
-        </ul>
-    </td>
-    <td>
-        <p>Vanshita Tilwani's Profile</p>
-        <hr>
-        <h1>Vanshita Tilwani<a style="float: right" href="./edit.html"><button>Edit Profile</button></a></h1>
-        <h3>Contact</h3>
-        <p>No registered services, you can add some on the settings page.</p>
-        <h3>Biography</h3>
-        <p>Computer Science Graduate Student</p>
-        <h3>Links</h3>
-        <a href="https://github.com/vanshita-tilwani">Github Profile</a>
-    </td>
-</table>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Account - Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <script src="https://kit.fontawesome.com/664a7886d0.js" crossorigin="anonymous"></script>
+  <body>
+    <div class="body container-fluid text-center">
+      <div class="row">
+        <div class="col-1 left">
+          <div id="navigation-bar">
+            <ul class="nav flex-column">
+              <li class="nav-item logo-container">
+                <a class="nav-link logo" href="../home.html"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-active" href="./profile/index.html">
+                  <i class="fa-solid fa-user kanbas-navigation-grey"></i>
+                  <div class="menu-text">Account</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../home.html">
+                  <i class="fa-solid fa-gauge-high fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Dashboard</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./course/index.html">
+                  <i class="fa-solid fa-book fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Courses</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-regular fa-calendar fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Calendar</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-solid fa-inbox fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Inbox</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-solid fa-clock fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">History</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-solid fa-computer fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Studio</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-solid fa-right-from-bracket fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Commons</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-solid fa-circle-question fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Help</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="d-flex mb-3 flex-column col-10 main">
+          <div class="p-2 row header">
+            <div class="col-1">
+              <button class="hamberge">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  t="1694988412409"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  p-id="1535"
+                >
+                  <path
+                    d="M170.666667 170.666667a42.666667 42.666667 0 0 0 0 85.333333h682.666666a42.666667 42.666667 0 1 0 0-85.333333H170.666667z m-42.666667 341.333333a42.666667 42.666667 0 0 1 42.666667-42.666667h682.666666a42.666667 42.666667 0 1 1 0 85.333334H170.666667a42.666667 42.666667 0 0 1-42.666667-42.666667z m0 298.666667a42.666667 42.666667 0 0 1 42.666667-42.666667h682.666666a42.666667 42.666667 0 1 1 0 85.333333H170.666667a42.666667 42.666667 0 0 1-42.666667-42.666666z"
+                    fill="#d41c2c"
+                    p-id="1536"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="col-5 title d-flex align-items-center">
+              <p>Vanshita Tilwani's Profile</p>
+            </div>
+          </div>
+          <div class="p-2 profile row">
+            <div class="profile-sidebar sidebar col-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Notifications</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Profile</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Files</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Settings</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">ePortfolios</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Shared Content</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">The Hub</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Qwickly Course Tools</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Global Announcements</a>
+                </li>
+              </ul>
+            </div>
+            <div class="profile-context col-9">
+              <div class="row">
+                <div class="col-8">
+                  <div class="portrait">
+                    <img src="../resources/profile-picture.png" />
+                    <p>Vanshita Tilwani</p>
+                    <div class="profile-item">
+                      <h2>Contact</h2>
+                      <p>
+                        No registered services, you can add some on the settings
+                        page.
+                      </p>
+                    </div>
+                    <div class="profile-item">
+                      <h2>Biography</h2>
+                      <p>Computer Science Graduate Student</p>
+                    </div>
+                    <div class="profile-item links">
+                      <h2>Links</h2>
+                      <p>
+                        <a href="https://www.linkedin.com/in/vanshita-tilwani/">LinkedIn</a>
+                        <svg
+                          t="1695056534405"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="1599"
+                          width="40"
+                          height="40"
+                        >
+                          <path
+                            d="M832 128H640v64h146.752L521.376 457.376l45.248 45.248L832 237.248V384h64V128z"
+                            fill="#d41c2c"
+                            p-id="1600"
+                          ></path>
+                          <path
+                            d="M768 832H192V256h352v-64H160a32 32 0 0 0-32 32v640a32 32 0 0 0 32 32h640a32 32 0 0 0 32-32V480h-64v352z"
+                            fill="#d41c2c"
+                            p-id="1601"
+                          ></path>
+                        </svg>
+                      </p>
+                      <p>
+                        <a href="https://github.com/vanshita-tilwani">GitHub</a>
+                        <svg
+                          t="1695056534405"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="1599"
+                          width="40"
+                          height="40"
+                        >
+                          <path
+                            d="M832 128H640v64h146.752L521.376 457.376l45.248 45.248L832 237.248V384h64V128z"
+                            fill="#d41c2c"
+                            p-id="1600"
+                          ></path>
+                          <path
+                            d="M768 832H192V256h352v-64H160a32 32 0 0 0-32 32v640a32 32 0 0 0 32 32h640a32 32 0 0 0 32-32V480h-64v352z"
+                            fill="#d41c2c"
+                            p-id="1601"
+                          ></path>
+                        </svg>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a class="float-end" href="./edit.html"
+                    ><button type="button" class="btn btn-default">
+                      <i
+                        style="color: #282c34"
+                        class="fa fa-pencil"
+                        aria-hidden="true"
+                      ></i>
+                      Edit Profile
+                    </button></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
