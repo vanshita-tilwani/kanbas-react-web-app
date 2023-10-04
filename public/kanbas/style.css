@@ -1,11 +1,19 @@
 /* default */
   .kanbas-navigation-red {
-  color: red;
+    color: red;
   }
 
   .kanbas-navigation-grey {
-  color: gray;
+    color: gray;
   }
+
+  .dashboard-heading {
+    color: #2d3b45;
+    font-size: 38px;
+    font-family: "Lato Extended", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+  }
+
   .btn {
     border-radius: 3px;
   }
@@ -60,7 +68,7 @@
     left: 0;
     overflow-y: auto;
   }
-  .left #navbar .logo-container {
+  .left #navigation-bar .logo-container {
     width: 100%;
     background-color: #000000;
     box-sizing: border-box;
@@ -75,17 +83,17 @@
     transition: transform 0.3s;
     height: 75px;
   }
-  #navbar .nav-item,#full-navbar .nav-item {
+  #navigation-bar .nav-item,#full-navbar .nav-item {
     height: 75px;
     min-width: 75px;
     max-width: 85px;
   }
   
-  #navbar .nav-item a,#full-navbar .nav-item a {
+  #navigation-bar .nav-item a,#full-navbar .nav-item a {
     padding: 5px 0px 5px 0px;
   }
   
-  #navbar .nav-icon-container,#full-navbar .nav-icon-container {
+  #navigation-bar .nav-icon-container,#full-navbar .nav-icon-container {
     transform: translate3d(0, 0, 0);
     position: relative;
     z-index: 1;
@@ -95,10 +103,10 @@
     line-height: 30px;
     fill: #ffffff;
   }
-  .left #navbar .nav-link {
+  .left #navigation-bar .nav-link {
     padding: 0;
   }
-  .left #navbar .nav-link .nav-icon-container .ic-icon-svg {
+  .left #navigation-bar .nav-link .nav-icon-container .ic-icon-svg {
     fill: #d41b2c;
   }
   .left .nav-link .menu-text {
@@ -106,10 +114,10 @@
     font-size: 12px;
     margin: 5px 0px 5px 0px;
   }
-  .left #navbar .nav-active {
+  .left #navigation-bar .nav-active {
     background: #fff;
   }
-  .left #navbar .nav-active .menu-text {
+  .left #navigation-bar .nav-active .menu-text {
     color: #d41c2c;
   }
   
@@ -188,7 +196,7 @@
   
   /*dashboard*/
   .main .dashboard .course {
-    width: 270px;
+    width: 260px;
     height: 300px;
     border-radius: 0px;
     text-align: left;
@@ -473,7 +481,7 @@
     }
   }
   @media screen and (max-width: 900px) {
-    #navbar {
+    #navigation-bar {
       display: none;
     }
     .left {
