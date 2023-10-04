@@ -1,78 +1,198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile Edit Screen</title>
-</head>
-<body>
-<table>
-    <td valign="top">
-        <ul>
-            <li><a href="main.html">Account</a></li>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="../course/main.html">Courses</a></li>
-            <li><a href="#">Calendar</a></li>
-            <li><a href="#">Inbox</a></li>
-            <li><a href="#">History</a></li>
-            <li><a href="#">Studio</a></li>
-            <li><a href="#">Commons</a></li>
-            <li><a href="#">Help</a></li>
-        </ul>
-    </td>
-    <td valign="top" width="250px">
-        <ul style="line-height: 22px">
-            <li><a href="#">Notifications</a></li>
-            <li><a href="index.html">Profile</a></li>
-            <li><a href="#">Files</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">ePortfolios</a></li>
-            <li><a href="#">Shared Content</a></li>
-            <li><a href="#">The Hub</a></li>
-            <li><a href="#">Qwickly Course Tools</a></li>
-            <li><a href="#">Global Announcements</a></li>
-        </ul>
-    </td>
-    <td >
-        <h1>Vanshita Tilwani</h1>
-        <form action="../profile/index.html">
-            <label>Name:*</label> <input type="text" value="Vanshita Tilwani"/>
-            <label>Pronouns</label>
-            <select>
-            <option value="none" selected>None</option>>
-            <option value="he_him">He/Him</option>>
-            <option value="she_her">She/Her</option>>
-            <option value="they_them">They/Them</option>>
-            </select>
-            <br>
-            <br>
-            <label>Title:</label><input type="text"/>
-            <h3>Contact</h3>
-            <p>No registered services, you can add some on the settings page.</p>
-            <h3>Biography</h3>
-            <textarea cols="60" rows="10">Computer Science Graduate Student</textarea>
-            <h3>Links</h3>
-            <ul>
-                <li><a href="https://github.com/vanshita-tilwani">GitHub</a></li>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edit Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="body container-fluid text-center">
+      <div class="row">
+        <div class="col-1 left">
+          <div id="navigation-bar">
+            <ul class="nav flex-column">
+              <li class="nav-item logo-container">
+                <a class="nav-link logo" href="../home.html"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-active" href="./profile/index.html">
+                  <i class="fa-solid fa-user kanbas-navigation-grey"></i>
+                  <div class="menu-text">Account</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../home.html">
+                  <i class="fa-solid fa-gauge-high fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Dashboard</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./course/index.html">
+                  <i class="fa-solid fa-book fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Courses</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-regular fa-calendar fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Calendar</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-solid fa-inbox fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Inbox</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-solid fa-clock fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">History</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-solid fa-computer fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Studio</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-solid fa-right-from-bracket fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Commons</div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fa-solid fa-circle-question fa-2x kanbas-navigation-red"></i>
+                  <div class="menu-text">Help</div>
+                </a>
+              </li>
             </ul>
-            <table>
-                <td>
-                    <h4>Title</h4>
-                    <input type="text" value="GitHub"> -->
-                </td>
-                <td>
-                    <h4>URL</h4>
-                    <input type="text" value="https://github.com/vanshita-tilwani"/>
-                </td>
-            </table>
-            <button>Add another link</button>
-            <br>
-            <button>Cancel</button>
-            <button>Save Profile</button>
-            <br>
-            <button>Edit Profile</button>
-            <button>Cancel Editing</button>
-        </form>
-        
-    </td>
-</table>
-</body>
+          </div>
+        </div>
+        <div class="d-flex mb-3 flex-column col-10 main">
+          <div class="p-2 row header">
+            <div class="col-1">
+              <button class="elipsis-menu">
+                <i class="fa-solid fa-bars fa-2x"></i>
+              </button>
+            </div>
+            <div class="col-5 title d-flex align-items-center">
+              <p>Vanshita Tilwani's Profile</p>
+            </div>
+          </div>
+          <div class="p-2 profile row">
+            <div class="profile-sidebar sidebar col-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Notifications</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="./index.html">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Files</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Settings</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">ePortfolios</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Shared Content</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">The Hub</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Qwickly Course Tools</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Global Announcements</a>
+                </li>
+              </ul>
+            </div>
+            <div class="profile-context col-9">
+              <form action="/Kanbas/profile.html">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="portrait portrait-edit">
+                      <i class="fa fa-user fa-5x wd-bg-grey" aria-hidden="true" style="width: 50px;margin-top: 10px;"></i>
+                      <br />
+                      <label for="name" class="form-label"><h5>Name:*</h5></label>
+                      <input class="profile-input form-control" type="text" id="name" name="name" value="Vanshita Tilwani"/>
+                      <label for="pronouns" class="form-label">Pronouns:</label>
+                      <select class="profile-input form-control" id="pronouns" name="pronouns">
+                        <option value="male">Male</option>
+                        <option value="female" selected>Female</option>
+                        <option value="non-binary">Non-binary</option>
+                      </select>
+                      <label for="title" class="form-label">Title</label>
+                      <input class="profile-input form-control" type="text" name="title" id="title"/>
+                      <div class="profile-item">
+                        <h2>Contact</h2>
+                        <p>No registered services, you can add some on the <a href="#" style="color:#9f231c;">settings</a> page.</p>
+                      </div>
+                      <div class="profile-item">
+                        <h2>Biography</h2>
+                        <textarea class="profile-input form-control" placeholder="Biography information" style="width: 400px; height: 200px">Computer Science Graduate from Northeastern, aspiring software engineer.</textarea>
+                      </div>
+                      <div class="profile-item links">
+                        <h2>Links</h2>
+                        <ul>
+                          <li>
+                            <a href="https://github.com/vanshita-tilwani">GitHub</a>
+                          </li>
+                        </ul>
+                        <div class="row">
+                          <div class="col-5">
+                            <h4>Title</h4>
+                            <input class="profile-input" type="text" value="GitHub"/>
+                          </div>
+                          <div class="col-2">--></div>
+                          <div class="col-5">
+                            <h4>URL</h4>
+                            <input class="profile-input" type="text" value="https://github.com/vanshita-tilwani"/>
+                          </div>
+                        </div>
+                        <button type="button" class="btn btn-default">
+                          Add another link
+                        </button>
+                      </div>
+                      <hr />
+                      <div class="edit-buttons float-end">
+                        <a href="./index.html">
+                          <button type="button" class="btn btn-default">
+                            Cancel
+                          </button>
+                        </a>
+                        <a href="./index.html">
+                          <button type="button" class="btn btn-default profile-save">
+                            Save Profile
+                          </button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <a class="float-end" href="./index.html">
+                      <button type="button" class="btn btn-default profile-save">
+                        <i class="fa-solid fa-pencil" style="color: #000000"></i>
+                        Cancel Editing
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
