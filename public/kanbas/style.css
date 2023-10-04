@@ -67,6 +67,17 @@
     background: #d41c2c;
     color: #eeeeee;
   }
+
+  .drag-drop-feel {
+    border-width:1px; 
+    border-style:solid; 
+    border-color:silver;
+  }
+
+  .elipsis-end {
+    margin-right: 10px;
+    margin-top: 5px;
+  }
   /* Kanbas Navigation */
 
   .left {
@@ -574,13 +585,7 @@
     .btn {
       font-size: 14px !important;
     }
-    .mobile-header {
-      display: block !important;
-      background-color: #000000;
-      color: #fff;
-      padding: 10px;
-      margin-bottom: 20px;
-    }
+    
   }
   
   .mobile-header {
