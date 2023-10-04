@@ -47,7 +47,12 @@
     background-color: #d41c2c;
     color: #fff;
   }
-  /* navigation */
+  .wd-bg-grey {
+    color: grey;
+  }
+
+  /* Kanbas Navigation */
+
   .left {
     margin: 0;
     padding: 0;
@@ -55,6 +60,7 @@
     max-width: 85px;
     position: relative;
   }
+
   .left #navigation-bar {
     background: #000000;
     color: #fff;
@@ -68,11 +74,13 @@
     left: 0;
     overflow-y: auto;
   }
+
   .left #navigation-bar .logo-container {
     width: 100%;
     background-color: #000000;
     box-sizing: border-box;
   }
+
   .logo {
     background-image: url("https://instructure-uploads.s3.amazonaws.com/account_145230000000000001/attachments/949/NU_MonoLVX_RGB_RW.png");
     display: block;
@@ -83,6 +91,7 @@
     transition: transform 0.3s;
     height: 75px;
   }
+
   #navigation-bar .nav-item,#full-navbar .nav-item {
     height: 75px;
     min-width: 75px;
@@ -103,29 +112,36 @@
     line-height: 30px;
     fill: #ffffff;
   }
+
   .left #navigation-bar .nav-link {
     padding: 0;
   }
+
   .left #navigation-bar .nav-link .nav-icon-container .ic-icon-svg {
     fill: #d41b2c;
   }
+
   .left .nav-link .menu-text {
     color: #ccc;
     font-size: 12px;
     margin: 5px 0px 5px 0px;
   }
+
   .left #navigation-bar .nav-active {
     background: #fff;
   }
+
   .left #navigation-bar .nav-active .menu-text {
     color: #d41c2c;
   }
   
-  /*profile*/
-  .hamberge {
+  /*Account Section - Profile*/
+  .elipsis-menu {
     background: none;
     border: none;
     width: 60px;
+    color: #9f231c;
+    margin-top: 10px;
   }
   .main .header {
     border-bottom: 1px solid #ccc;
@@ -177,7 +193,7 @@
     line-height: 30px;
   }
   
-  /*profile-edit*/
+  /*Account Section - Profile Edit*/
   .main .profile .profile-input {
     padding: 10px;
     border: 1px solid #ccc;
@@ -194,7 +210,7 @@
     color: #eeeeee;
   }
   
-  /*dashboard*/
+  /*Dashboard Section*/
   .main .dashboard .course {
     width: 260px;
     height: 300px;
@@ -218,7 +234,7 @@
     white-space: nowrap;
   }
   
-  /*assignments*/
+  /*Course Section - Assignments*/
   .main .title {
     height: 60px;
   }
@@ -236,55 +252,68 @@
     margin: 0 20px 0 20px;
     color: #d41c2c;
   }
+
   .main .title .breadcrumb > li + li:before {
     color: #000000;
     content: "> ";
     padding: 0 5px;
   }
+
   .main .title .breadcrumb-item a {
     color: #d41c2c;
     text-decoration: none;
   }
+
   .main .main-header {
     text-align: left;
     margin: 10px 0px 10px 0px;
   }
+
   .main .main-header button {
     font-size: 14px;
   }
+
   .main .main-header table{
     line-height: 40px;
   }
+
   .main-header table td {
     vertical-align: top;
   }
-  #control-course ul li {
+
+  #course-panel ul li {
     width: 100%;
     margin: 3px;
     padding: 0;
   }
-  #control-course ul li button {
+
+  #course-panel ul li button {
     text-align: left;
     border-radius: 3px;
     font-size: 14px;
   }
-  #control-course ul li > button {
+
+  #course-panel ul li > button {
     width: inherit;
   }
-  #control-course ul li .parallel-buttons {
+
+  #course-panel ul li .parallel-buttons {
     font-size: 0;
     margin: 0px 0px 10px 0px;
   }
-  #control-course ul li .parallel-buttons button {
-    width: calc(50%); /* 计算宽度，减去两个按钮的1px边框 */
-    box-sizing: border-box; /* 让边框计算在元素的宽度内 */
-    display: inline-block; /* 将按钮显示为行内元素，以便它们可以在同一行上 */
-    text-align: center; /* 按钮内文本居中 */
+
+  #course-panel ul li .parallel-buttons button {
+    width: calc(50%); 
+    box-sizing: border-box;
+    display: inline-block; 
+    text-align: center; 
     margin: 0;
   }
-  #control-course ul li .parallel-buttons button i {
+
+  #course-panel ul li .parallel-buttons button i {
     margin: 3px;
   }
+
   .course-info {
     padding: 0;
   }
@@ -292,26 +321,82 @@
   .panel {
     margin: 10px 0px 20px 0px;
   }
+
   .panel .panel-title {
     margin-bottom: 10px;
     padding: 0;
     font-size: 14px;
     border-bottom: 1px solid #ccc;
   }
+
   .panel .panel-title p {
     margin: 0;
     padding-left: 10px;
     text-align: left;
   }
   
-  /*sidebar*/
+  .published {
+    font-size: 16px;
+  }
+
+  .main-body {
+    text-align: left;
+  }
+  .assignments{
+    text-align: left;
+  }
+  .assignments-detail-form > form > div {
+    margin: 20px 0px 20px 0px;
+  }
+  
+  .assignments-card {
+    text-align: left;
+    border-radius: 0px;
+    border-left: 5px solid #0a6a37;
+  }
+  
+  .assignments-card ul {
+    border-radius: none;
+  }
+  .assignments-card ul li:first-child {
+    height: 50px;
+  }
+  
+  .assignments-card .assignments li {
+    margin: 10px 0px 10px 0px;
+    height: 200px;
+  }
+  
+  .assignments-card a {
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  .assignments-card a:hover {
+    text-decoration: none;
+    color: #d41b2c;
+  }
+  
+  .assignments-card li h1 {
+    font-size: 22px;
+  }
+  
+  .assignments-card li div {
+    width: 80%;
+  }
+  
+  .dashboard-courses {
+    max-width: 1300px;
+  }
+  
+  /*Side Bar*/
   .sidebar {
     padding: 0 0 0 20px;
     max-width: 200px;
     min-width: 190px;
   }
   
-  /*basement*/
+
   .col-md-1-5 {
     width: 12.5%;
   }
@@ -347,7 +432,7 @@
   }
   
   .fa {
-    color: #d41c2c;
+    
     font-size: px;
   }
   
@@ -419,60 +504,8 @@
   .grades .result .result-table input {
     text-align: center;
   }
-  /*assignments*/
-  .published {
-    font-size: 16px;
-  }
-  .main-body {
-    text-align: left;
-  }
-  .assignments{
-    text-align: left;
-  }
-  .assignments-detail-form > form > div {
-    margin: 20px 0px 20px 0px;
-  }
+
   
-  /* assignments */
-  .assignments-card {
-    text-align: left;
-    border-radius: 0px;
-    border-left: 5px solid #0a6a37;
-  }
-  
-  .assignments-card ul {
-    border-radius: none;
-  }
-  .assignments-card ul li:first-child {
-    height: 50px;
-  }
-  
-  .assignments-card .assignments li {
-    margin: 10px 0px 10px 0px;
-    height: 200px;
-  }
-  
-  .assignments-card a {
-    text-decoration: none;
-    color: #000000;
-  }
-  
-  .assignments-card a:hover {
-    text-decoration: none;
-    color: #d41b2c;
-  }
-  
-  .assignments-card li h1 {
-    font-size: 22px;
-  }
-  
-  .assignments-card li div {
-    width: 80%;
-  }
-  
-  .dashboard-courses {
-    max-width: 1300px;
-  }
   
   /* responsible */
   @media screen and (max-width: 1400px) {
