@@ -6,6 +6,7 @@ import TernaryOperator from "./TernaryOperator";
 import WorkingWithFunctions from "./WorkingWithFunctions";
 import WorkingWithArrays from "./WorkingWithArrays";
 import TemplateLiterals from "./TemplateLiterals";
+import House from "./House";
 function JavaScript() {
     console.log('Hello World!');
     return(
@@ -19,6 +20,7 @@ function JavaScript() {
           <WorkingWithFunctions/>
           <WorkingWithArrays/>
           <TemplateLiterals/>
+          <House/>
        </div>
     );
  }
