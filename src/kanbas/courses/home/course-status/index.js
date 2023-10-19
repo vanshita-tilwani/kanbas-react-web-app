@@ -43,6 +43,7 @@ function Status() {
           <FaCheckCircle style={{ color: "red" }} className="fa-todo-yes"/>
         </div>
         <div className="course-to-do-description">
+        {/* eslint-disable-next-line */}
           <a href="javascript:void(0)">
             Grade A1 - ENV + HTML
           </a>
@@ -60,6 +61,7 @@ function Status() {
         </div>
         <div className="course-calendar ms-auto p-2">
           <FaCalendarCheck />
+          {/* eslint-disable-next-line */}
           <a href="javascript:void(0)">
             View Calendar
           </a>
@@ -69,6 +71,7 @@ function Status() {
       <div className="course-calendar-title">
         <FaCalendarCheck />
         <div className="course-calendar-description">
+          {/* eslint-disable-next-line */}
           <a href="javascript:void(0)">
             Lecture
           </a>
@@ -83,6 +86,7 @@ function Status() {
       <div className="course-calendar-title">
         <FaCalendarCheck />
         <div className="course-calendar-description">
+          {/* eslint-disable-next-line */}
           <a href="javascript:void(0)">
             CS5610 06 SP23 Lecture
           </a>
@@ -97,6 +101,7 @@ function Status() {
       <div className="course-calendar-title">
         <FaCalendarCheck/>
         <div className="course-calendar-description">
+          {/* eslint-disable-next-line */}
           <a href="javascript:void(0)">
             <span>
               CS5610 Web Development
@@ -114,6 +119,7 @@ function Status() {
         </div>
       </div>
       <div className="course-calendar-title">
+        {/* eslint-disable-next-line */}
         <a href="javascript:void(0)">
           12 more in the next week...
         </a>

@@ -19,8 +19,11 @@ function Modules() {
             Publish All
           </button>
           <ul className="dropdown-menu">
+          {/* eslint-disable-next-line */}
             <li><a className="dropdown-item" href="#">Week 0 - INTRO</a></li>
+            {/* eslint-disable-next-line */}
             <li><a className="dropdown-item" href="#">Week 1 - HTML</a></li>
+            {/* eslint-disable-next-line */}
             <li><a className="dropdown-item" href="#">Week 2 - CSS</a></li>
           </ul>
         </div>

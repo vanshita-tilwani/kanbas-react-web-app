@@ -9,6 +9,7 @@ function BooleanVariables(){
   let true4 = numberVariable === 123
   let true5 = floatingPointNumber !== 321.432
   let false3 = numberVariable < 100
+  // eslint-disable-next-line
   let sortaTrue = '1' == 1  // never use this ==
   let notTrue   = '1' === 1 // always use this ===
   return (
