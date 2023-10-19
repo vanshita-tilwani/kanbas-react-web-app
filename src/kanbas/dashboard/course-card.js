@@ -15,7 +15,7 @@ const CourseCard = ({
 }) => {
     return (
         // Single card in bootstrap card group
-        <div className="col">
+        <div className="col course-card">
             <div className="card shadow-sm">
                 {/* Course image with button at upper right corner */}
                 <div className="card-img-top wd-course-solid-blue wd-course-img-height-125px d-flex flex-row">

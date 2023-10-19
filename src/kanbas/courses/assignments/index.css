@@ -1,0 +1,63 @@
+.assignment {
+  padding: 0 24px;
+  float: left;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.assignment .assignment-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.assignment .assignment-button {
+  margin: 2px;
+  border-radius: 3px !important;
+}
+
+.assignment .assignment-list {
+  margin: 10px;
+}
+
+.assignment-list .list-group-item:first-child {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.assignment-list .list-group-item:last-child {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.assignment-list .assignment-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.assignment-list .icon-margin {
+  margin-right: 14px;
+}
+
+.assignment-list .icon-margin-small {
+  margin-right: 4px;
+}
+
+.assignment-list .assignment-text {
+  font-weight: bold;
+}
+
+.assignment-list .assignment-title a {
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.assignment-list .assignment-title-total {
+  border: 1px rgb(168, 159, 159) solid !important;
+}
+
+.assignment-list .assignment-list-item-green-border {
+  border-left: 4px solid green;
+}

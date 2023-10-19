@@ -1,6 +1,6 @@
 import React from "react";
 import { FaBan, FaBullseye, FaCheckCircle, FaFileImport, FaBullhorn,FaCalendarCheck } from "react-icons/fa";
-import { FaArrowRightFromBracket, FaChartSimple } from "react-icons/fa6";
+import { FaArrowRightFromBracket, FaChartSimple , FaX} from "react-icons/fa6";
 import "./index.css";
 
 function Status() {
@@ -51,7 +51,7 @@ function Status() {
           </div>
         </div>
         <div>
-          <faX style={{ color: "gray" }} className="fa-todo-x" />
+          <FaX style={{ color: "gray" }} className="fa-todo-x" />
         </div>
       </div>
       <div className="course-to-do">

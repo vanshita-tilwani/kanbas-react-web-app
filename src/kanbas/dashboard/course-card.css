@@ -2,7 +2,7 @@
   --solid-blue: #2486b9;
 }
 
-.col {
+.course-card {
   width: 250px !important;
   height: 250px !important;
   margin-block: 30px;
