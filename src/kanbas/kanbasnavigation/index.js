@@ -9,8 +9,9 @@ import "./index.css";
 
 function KanbasNavigation() {
 
-    const links = ["Account", "Dashboard", "Courses", "Calendar", "Inbox", "History", "Studio", "Commons", "Help"];
+    const links = ["Account", "Dashboard", "Courses/RS101", "Calendar", "Inbox", "History", "Studio", "Commons", "Help"];
     const linkToIconMap = {
+      
         "Account": <BiUserCircle className="wd-icon" />,
         "Dashboard": <TfiDashboard className="wd-icon" />,
         "Courses": <BiBook className="wd-icon" />,
@@ -35,8 +36,8 @@ function KanbasNavigation() {
                         key={index}
                         to={`/kanbas/${link}`}
                         className={`list-group-item ${pathname.includes(link) && "active"} d-flex flex-column`}>
-                        {linkToIconMap[link]}
-                        {link}
+                        {linkToIconMap[link.split("/")[0]]}
+                        {link.split("/")[0]}
                     </Link>
                 ))}
             </div>

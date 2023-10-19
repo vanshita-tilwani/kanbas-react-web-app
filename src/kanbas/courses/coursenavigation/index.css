@@ -1,0 +1,46 @@
+.course-navigation {
+    float: left;
+    width: 190px;
+}
+
+.course-navigation .courses-navigation-title {
+    margin-left: 25px;
+    font-size: small;
+    font-style: italic;
+}
+
+.course-navigation .semester-heading {
+    display: inline-block;
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.course-navigation .list-group {
+    width: 165px;
+    border-radius: 0 !important;
+    border: none !important;
+    padding: 0 15px 0 0 !important;
+    text-align: left !important;
+    padding: 0 !important;
+    margin-left: 17px;
+    --bs-list-group-item-padding-x: 8px !important;
+    --bs-list-group-item-padding-y: 8px !important;
+}
+
+.course-navigation  .list-group-item {
+    background-color: white !important;
+    color: red !important;
+    border-width: 0 !important; /* Set border-width to 0 */
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+.course-navigation .list-group-item.active {
+    background-color: white !important;
+    color: black !important;
+    border-left: 2px black solid !important;
+    font-size: 0.85rem;
+    font-weight: 300;
+}

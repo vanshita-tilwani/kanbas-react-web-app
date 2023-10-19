@@ -1,11 +1,43 @@
+import { FaPlus, FaCheckCircle} from "react-icons/fa";
+import {FaEllipsisVertical} from "react-icons/fa6"
 import ModuleList from "./modulelist";
+import "./index.css";
+
 function Modules() {
   return (
-    <div>
-      <h2>Modules</h2>
-      <ModuleList />
+    <div className="modules">
+      <div className="home-buttons">
+        <button className="btn btn-light home-button">
+          Collapse All
+        </button>
+        <button className="btn btn-light home-button">
+          View Progress
+        </button>
+        <div className="dropdown">
+          <button className="btn btn-light dropdown-toggle home-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <FaCheckCircle className="circle-check-icon" />
+            Publish All
+          </button>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="#">Week 0 - INTRO</a></li>
+            <li><a className="dropdown-item" href="#">Week 1 - HTML</a></li>
+            <li><a className="dropdown-item" href="#">Week 2 - CSS</a></li>
+          </ul>
+        </div>
+        <button className="btn btn-danger home-button">
+          <FaPlus />
+          Module
+        </button>
+        <button className="btn btn-light home-button">
+          <FaEllipsisVertical />
+        </button>
+      </div>
+      <hr />
+      <div className="module-list">
+        <ModuleList />
+      </div>
     </div>
   );
 }
-export default Modules;
 
+export default Modules;

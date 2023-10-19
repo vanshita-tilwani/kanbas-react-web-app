@@ -1,21 +1,26 @@
 import { Link, useParams, useLocation } from "react-router-dom";
-
+import "./index.css";
 
 function CourseNavigation() {
   const links = ["Home", "Modules", "Assignments", "Grades"];
   const { courseId } = useParams();
   const { pathname } = useLocation();
   return (
-    <div className="list-group" style={{ width: 150 }}>
-      {links.map((link, index) => (
-        <Link
-          key={index}
-          to={`/kanbas/courses/${courseId}/${link}`}
-          className={`list-group-item ${pathname.includes(link) && "active"}`}>
-          {link}
-        </Link>
-      ))}
-    </div>
+    <div className="course-navigation">
+            <div class="course-navigation-title semester-heading">
+                202410_2 Fall 2023 Semester Full Term Grad
+            </div>
+            <div className="list-group" >
+                {links.map((link, index) => (
+                    <Link
+                        key={index}
+                        to={`/Kanbas/Courses/${courseId}/${link}`}
+                        className={`list-group-item ${pathname.includes(link) && "active"}`}>
+                        {link}
+                    </Link>
+                ))}
+            </div>
+        </div>
   );
 }
 
