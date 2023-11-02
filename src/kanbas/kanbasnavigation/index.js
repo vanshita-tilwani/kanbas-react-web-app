@@ -26,19 +26,23 @@ function KanbasNavigation() {
     const { pathname } = useLocation();
 
     return (
-        <div className="wd-kanbas-navbar">
-            <div className="list-group wd-kanbas-navigation" style={{ width: 150 }}>
-                <Link key={9} to='/kanbas/dashboard' className='list-group-item d-flex flex-column neu-icon'>
-                    <img className="img-fluid" src={require("./NU_logo.png")} alt="NU Logo" />
-                </Link>
+        <div className="kanbas-navigation-side-bar">
+            <div>
+                <img src={require("./NU_logo.png")} width="80px" alt="logo" />
+            </div>
+            <div className="list-group">
                 {links.map((link, index) => (
-                    <Link
-                        key={index}
-                        to={`/kanbas/${link}`}
-                        className={`list-group-item ${pathname.includes(link) && "active"} d-flex flex-column`}>
-                        {linkToIconMap[link.split("/")[0]]}
+                    <div key={index} className="list-group-item">
+                        <Link
+                            to={`/Kanbas/${link}`} className={`list-group-item ${pathname.includes(
+                                links[index]
+                            ) && "active"}`}>
+                            <div className="d-flex flex-column">
+                            {linkToIconMap[link.split("/")[0]]}
                         {link.split("/")[0]}
-                    </Link>
+                            </div>
+                        </Link>
+                    </div>
                 ))}
             </div>
         </div>

@@ -1,26 +1,72 @@
-import CourseCard from "./course-card";
-import db from "../database";
+import { Link } from "react-router-dom";
+// import db from "../Database";
 import "./index.css";
+import { PiNotePencil } from "react-icons/pi";
+import { React } from "react";
 
-function Dashboard() {
-    const courses = db.courses;
+function Dashboard({ courses, course, setCourse, addNewCourse,
+    deleteCourse, updateCourse }
+) {
     return (
-        <div className="mx-xs-1 mx-md-2 mx-lg-3 flex-grow-1">
-            <h1>Dashboard</h1>
-            <hr />
-            <div className="ms-md-3">
-                <h2>Published Courses ({courses.length})</h2>
+        <div className="dashboard">
+            <div className="kanbas-navigation-toggle">
+                <h1>Dashboard</h1>
+                <h5>Course</h5>
+                <input value={course.name} className="form-control small-margin-bottom"
+                    onChange={(e) => setCourse({ ...course, name: e.target.value })} />
+                <input value={course.number} className="form-control small-margin-bottom"
+                    onChange={(e) => setCourse({ ...course, number: e.target.value })} />
+                <input value={course.startDate} className="form-control small-margin-bottom" type="date"
+                    onChange={(e) => setCourse({ ...course, startDate: e.target.value })} />
+                <input value={course.endDate} className="form-control small-margin-bottom" type="date"
+                    onChange={(e) => setCourse({ ...course, endDate: e.target.value })} />
+                <button className="btn btn-success small-margin-right" onClick={addNewCourse} >
+                    Add
+                </button>
+                <button className="btn btn-primary" onClick={updateCourse} >
+                    Update
+                </button>
                 <hr />
-                <div className="d-flex flex-row flex-wrap row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-start" id="wd-course-cards-container">
-                    {courses.map((course) => {
-                        return (
-                            <CourseCard course={course} />
-                        )
-                    }
-                    )}
+            </div>
+            <div className="dashboard-main-content">
+                <h2>
+                    Published Courses ({courses.length})
+                </h2>
+                <hr />
+                <div className="dashboard-card-box">
+                    <div className="d-flex flex-row flex-wrap">
+                        {courses.map((course) => (
+                            <div className="dashboard-course-card">
+                                
+                                <div className="dashboard-course-card-description">
+                                    <Link key={course._id} to={`/Kanbas/Courses/${course._id}`} >
+                                        {course.name}
+                                    </Link>
+                                    <div>{course.number}</div>
+                                    <div>From {course.startDate} to {course.endDate}</div>
+                                    <PiNotePencil />
+                                    <div>
+                                        <button className="btn btn-success small-margin-right"
+                                            onClick={(event) => {
+                                                event.preventDefault();
+                                                setCourse(course);
+                                            }}>
+                                            Edit
+                                        </button>
+                                        <button className="btn btn-danger"
+                                            onClick={(event) => {
+                                                event.preventDefault();
+                                                deleteCourse(course._id);
+                                            }}>
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
-
         </div>
     );
 }

@@ -1,4 +1,3 @@
-import db from "../database";
 import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import CourseNavigation from "./coursenavigation";
 import Modules from "./modules";
@@ -7,9 +6,9 @@ import Assignments from "./assignments";
 import AssignmentEditor from "./assignments/assignmenteditor";
 import Grades from "./grades";
 
-function Courses() {
+function Courses({ courses }) {
   const { courseId } = useParams();
-  const course = db.courses.find((course) => course._id === courseId);
+  const course = courses.find((course) => course._id === courseId);
   return (
     <div>
       <h1>Course {course.name}</h1>

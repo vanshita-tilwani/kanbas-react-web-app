@@ -1,5 +1,50 @@
-#wd-course-cards-container {
-  max-width: 1100px;
-  margin-right: 50px;
-  column-gap: 20px;
+.dashboard .kanbas-navigation-toggle h1 {
+  font-weight: 200 !important;
+}
+
+.dashboard .kanbas-navigation-toggle {
+  margin: 20px 20px 10px 20px;
+  min-height: 4.5rem;
+}
+
+.dashboard .dashboard-main-content {
+  margin: 0 20px 0 30px;
+}
+
+.dashboard .dashboard-main-content h2 {
+  font-weight: 300 !important;
+}
+
+.dashboard .dashboard-card-box {
+  margin: -30px 0 30px -30px;
+  padding-bottom: 5px;
+}
+
+.dashboard .dashboard-course-card {
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  width: 260px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 30px 0 0 30px;
+}
+
+.dashboard .dashboard-course-card-description {
+  padding: 10px;
+  font-size: small;
+}
+
+.dashboard .dashboard-course-card-description a {
+  text-decoration: none;
+}
+
+.dashboard .small-margin-right {
+  margin-right: 4px;
+}
+
+.dashboard .small-margin-bottom {
+  margin-bottom: 5px;
 }
