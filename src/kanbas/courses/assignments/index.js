@@ -18,7 +18,7 @@ function Assignments() {
 
   const handleAddAssignment = () => {
     const newAssignment = {
-      title: "New Assingment",
+      title: "New Assignment",
       description: "New Assignment Description",
       course: courseId,
       _id: new Date().getTime().toString(),
