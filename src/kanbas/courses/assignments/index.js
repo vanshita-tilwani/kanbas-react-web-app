@@ -1,16 +1,38 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import db from "../../database";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import "./index.css";
 import { FaPlus, FaCheckCircle, FaCaretDown} from "react-icons/fa";
 import {FaEllipsisVertical,FaPenToSquare} from "react-icons/fa6"
-
+import { useSelector, useDispatch } from "react-redux";
+import {
+  deleteAssignment,
+  setAssignment,
+} from "./assignmentsReducer";
 
 function Assignments() {
   const { courseId } = useParams();
-  const assignments = db.assignments;
-  const courseAssignments = assignments.filter(
-    (assignment) => assignment.course === courseId);
+  const navigate = useNavigate();
+  const assignments = useSelector((state) => state.assignmentsReducer.assignments);
+  const assignmentsForCurrentCourse = assignments.filter((ass) => ass.course === courseId);
+  const dispatch = useDispatch();
+
+  const handleAddAssignment = () => {
+    const newAssignment = {
+      title: "New Assingment",
+      description: "New Assignment Description",
+      course: courseId,
+      _id: new Date().getTime().toString(),
+    };
+    dispatch(setAssignment(newAssignment));
+    navigate(`/kanbas/courses/${courseId}/assignments/${newAssignment._id}`);
+  }
+ 
+  const handleDeleteAssignment = async(id) => {
+    if ( window.confirm('Are you sure that you wish to remove the assignment?')) {
+      dispatch(deleteAssignment(id));
+    }
+  };
+
   return (
     <div className="assignment">
       <div className="d-flex justify-content-between">
@@ -24,7 +46,7 @@ function Assignments() {
             <FaPlus className="icon-margin" />
             Group
           </button>
-          <button className="btn btn-danger assignment-button">
+          <button className="btn btn-danger assignment-button" onClick={handleAddAssignment}>
             <FaPlus className="icon-margin" />
             Assignment
           </button>
@@ -49,7 +71,7 @@ function Assignments() {
               <FaEllipsisVertical />
             </div>
           </li>
-          {courseAssignments.map((assignment) => (
+          {assignmentsForCurrentCourse.map((assignment) => (
             <li className="list-group-item assignment-list-item assignment-list-item-green-border">
               <div className="d-flex flex-row align-items-center">
                 <FaEllipsisVertical />
@@ -58,18 +80,22 @@ function Assignments() {
                 <div>
                   <div className="assignment-title">
                     <Link
-                      key={assignment._id}
+                      key={assignment._id}  
+                      onClick={() => dispatch(setAssignment(assignment))}
                       to={`/kanbas/courses/${courseId}/assignments/${assignment._id}`}>
                       {assignment.title}
                     </Link>
                   </div>
                   <div>
                     <span style={{ color: "red" }}>Multiple Modules </span>
-                    | Due Sep 11, 2022 at 11:59am | 100 pts
+                    | Due {assignment.dueDate} at 11:59 PM | 100 pts
                   </div>
                 </div>
               </div>
               <div className="d-flex flex-row align-items-center">
+                <button className="btn btn-danger icon-margin" onClick={() => handleDeleteAssignment(assignment._id)}>
+                  Delete
+                </button>
                 <FaCheckCircle style={{ color: "green" }} className="icon-margin" />
                 <FaEllipsisVertical />
               </div>
@@ -77,6 +103,7 @@ function Assignments() {
           ))}
         </ul>
       </div>
+      
     </div>
   );
 }

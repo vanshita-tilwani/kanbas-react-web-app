@@ -22,35 +22,35 @@
   },
   {
       "_id": "RS104",
-      "name": "Rocket Propulsion",
+      "name": "Software Engineering",
       "number": "RS4550",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15"
   },
   {
       "_id": "RS105",
-      "name": "Aerodynamics",
+      "name": "Web Development",
       "number": "RS4560",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15"
   },
   {
       "_id": "RS106",
-      "name": "Spacecraft Design",
+      "name": "Algorithms",
       "number": "RS4570",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15"
   },
   {
       "_id": "RS107",
-      "name": "Rocket Propulsion",
+      "name": "Database Management Systems",
       "number": "RS4550",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15"
   },
   {
       "_id": "RS108",
-      "name": "Aerodynamics",
+      "name": "Cloud Computing",
       "number": "RS4560",
       "startDate": "2023-01-10",
       "endDate": "2023-05-15"
