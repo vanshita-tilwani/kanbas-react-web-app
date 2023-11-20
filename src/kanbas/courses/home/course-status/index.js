@@ -44,7 +44,7 @@ function Status() {
         </div>
         <div className="course-to-do-description">
         {/* eslint-disable-next-line */}
-          <a href="javascript:void(0)">
+          <a href="">
             Grade A1 - ENV + HTML
           </a>
           <div>
@@ -62,7 +62,7 @@ function Status() {
         <div className="course-calendar ms-auto p-2">
           <FaCalendarCheck />
           {/* eslint-disable-next-line */}
-          <a href="javascript:void(0)">
+          <a href="">
             View Calendar
           </a>
         </div>
@@ -72,7 +72,7 @@ function Status() {
         <FaCalendarCheck />
         <div className="course-calendar-description">
           {/* eslint-disable-next-line */}
-          <a href="javascript:void(0)">
+          <a href="">
             Lecture
           </a>
           <div>
@@ -87,7 +87,7 @@ function Status() {
         <FaCalendarCheck />
         <div className="course-calendar-description">
           {/* eslint-disable-next-line */}
-          <a href="javascript:void(0)">
+          <a href="">
             CS5610 06 SP23 Lecture
           </a>
           <div>
@@ -102,7 +102,7 @@ function Status() {
         <FaCalendarCheck/>
         <div className="course-calendar-description">
           {/* eslint-disable-next-line */}
-          <a href="javascript:void(0)">
+          <a href="">
             <span>
               CS5610 Web Development
             </span>
@@ -120,7 +120,7 @@ function Status() {
       </div>
       <div className="course-calendar-title">
         {/* eslint-disable-next-line */}
-        <a href="javascript:void(0)">
+        <a href="">
           12 more in the next week...
         </a>
       </div>

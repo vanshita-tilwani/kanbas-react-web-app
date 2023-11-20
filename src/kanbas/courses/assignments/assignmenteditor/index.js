@@ -10,6 +10,7 @@ import {
   updateAssignment,
   setAssignment,
 } from ".././assignmentsReducer";
+import * as service from "../service";
 
 function AssignmentEditor() {
   const { assignmentId } = useParams();
@@ -17,14 +18,25 @@ function AssignmentEditor() {
   const assignment = useSelector((state) => state.assignmentsReducer.assignment);
   const dispatch = useDispatch();
 
+  const handleUpdateAssignment = async () => {
+    await service.updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
+  };
+
+  const handleAddAssignment = async() => {
+    service.createAssignment(courseId, assignment).then((assignment) => {
+      dispatch(addAssignment(assignment));
+    });
+  };
+
   const { courseId } = useParams();
   const navigate = useNavigate();
-  const handleSave = () => {
+  const handleSave = async() => {
     const existingAssignment = assignments.find((ass) => ass._id === assignmentId);
     if (existingAssignment) {
-      dispatch(updateAssignment(assignment));
+      await handleUpdateAssignment();
     } else {
-      dispatch(addAssignment(assignment));
+      await handleAddAssignment();
     }
     navigate(`/kanbas/courses/${courseId}/assignments`);
   };

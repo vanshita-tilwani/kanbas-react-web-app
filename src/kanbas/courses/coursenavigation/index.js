@@ -7,7 +7,7 @@ function CourseNavigation() {
   const { pathname } = useLocation();
   return (
     <div className="course-navigation">
-            <div classname="course-navigation-title semester-heading">
+            <div className="course-navigation-title semester-heading">
                 202410_2 Fall 2023 Semester Full Term Grad
             </div>
             <div className="list-group" >

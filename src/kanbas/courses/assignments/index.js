@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import "./index.css";
 import { FaPlus, FaCheckCircle, FaCaretDown} from "react-icons/fa";
@@ -7,13 +7,20 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   deleteAssignment,
   setAssignment,
+  setAssignments,
 } from "./assignmentsReducer";
+import * as service from "./service";
 
 function Assignments() {
   const { courseId } = useParams();
+  useEffect(() => {
+    service.findAssignmentsForCourse(courseId)
+      .then((assignments) =>
+        dispatch(setAssignments(assignments))
+    );
+  }, [courseId]);
   const navigate = useNavigate();
   const assignments = useSelector((state) => state.assignmentsReducer.assignments);
-  const assignmentsForCurrentCourse = assignments.filter((ass) => ass.course === courseId);
   const dispatch = useDispatch();
 
   const handleAddAssignment = () => {
@@ -27,11 +34,14 @@ function Assignments() {
     navigate(`/kanbas/courses/${courseId}/assignments/${newAssignment._id}`);
   }
  
-  const handleDeleteAssignment = async(id) => {
+  const handleDeleteAssignment = (moduleId) => {
     if ( window.confirm('Are you sure that you wish to remove the assignment?')) {
-      dispatch(deleteAssignment(id));
-    }
+    service.deleteAssignment(moduleId).then((status) => {
+      dispatch(deleteAssignment(moduleId));
+    });
+  }
   };
+
 
   return (
     <div className="assignment">
@@ -71,7 +81,7 @@ function Assignments() {
               <FaEllipsisVertical />
             </div>
           </li>
-          {assignmentsForCurrentCourse.map((assignment) => (
+          {assignments.map((assignment) => (
             <li className="list-group-item assignment-list-item assignment-list-item-green-border">
               <div className="d-flex flex-row align-items-center">
                 <FaEllipsisVertical />
