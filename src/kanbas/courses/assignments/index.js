@@ -18,6 +18,7 @@ function Assignments() {
       .then((assignments) =>
         dispatch(setAssignments(assignments))
     );
+    // eslint-disable-next-line 
   }, [courseId]);
   const navigate = useNavigate();
   const assignments = useSelector((state) => state.assignmentsReducer.assignments);

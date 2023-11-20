@@ -20,6 +20,7 @@ function ModuleList() {
       .then((modules) =>
         dispatch(setModules(modules))
     );
+    // eslint-disable-next-line 
   }, [courseId]);
 
   const handleAddModule = () => {
