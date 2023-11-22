@@ -10,8 +10,8 @@ function WorkingWithArrays() {
     due: "2021-09-09",
     completed: false,
   });
-
-  const API = "https://kanbas-node-server-app-ztc3.onrender.com/a5/todos";
+  const BASE_URL = "http://localhost:4000" //https://kanbas-node-server-app-ztc3.onrender.com
+  const API = `${BASE_URL}/a5/todos`;
   const [todos, setTodos] = useState([]);
   const postTodo = async () => {
     const response = await axios.post(API, todo);
