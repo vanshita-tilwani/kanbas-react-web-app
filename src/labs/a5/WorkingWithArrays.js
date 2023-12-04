@@ -39,6 +39,7 @@ function WorkingWithArrays() {
   };
   useEffect(() => {
     fetchTodos();
+    // eslint-disable-next-line
   }, []);
 
   const removeTodo = async (todo) => {

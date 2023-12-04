@@ -4,6 +4,7 @@ import * as client from "./client";
 
 function Account() {
   const { id } = useParams();
+  // eslint-disable-next-line
   const [courses, setCourses] = useState([]);
   
   const signout = async () => {
@@ -32,6 +33,7 @@ function Account() {
 
   useEffect(() => {
     fetchAccount(id);
+    // eslint-disable-next-line
   }, []);
 
   return (

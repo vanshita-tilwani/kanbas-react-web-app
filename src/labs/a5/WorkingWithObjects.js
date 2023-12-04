@@ -25,6 +25,7 @@ function WorkingWithObjects() {
   };
   useEffect(() => {
     fetchAssignment();
+    // eslint-disable-next-line
   }, []);
 
   return (

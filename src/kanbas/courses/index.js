@@ -21,6 +21,7 @@ function Courses() {
   };
   useEffect(() => {
     findCourseById(courseId);
+    // eslint-disable-next-line
   }, [courseId]);
 
   return (

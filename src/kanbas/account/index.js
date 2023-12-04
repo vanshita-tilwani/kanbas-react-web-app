@@ -7,7 +7,7 @@ function Account() {
   
   const signout = async () => {
     await client.signout();
-    navigate("/session/signin");
+    navigate("/session/nav");
   };
   const [account, setAccount] = useState(null);
   const navigate = useNavigate();
