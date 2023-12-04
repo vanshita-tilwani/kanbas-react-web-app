@@ -10,7 +10,7 @@ function WorkingWithArrays() {
     due: "2021-09-09",
     completed: false,
   });
-  const BASE_URL = "http://localhost:4000" //https://kanbas-node-server-app-ztc3.onrender.com
+  const BASE_URL = process.env.REACT_APP_API_BASE; //https://kanbas-node-server-app-ztc3.onrender.com
   const API = `${BASE_URL}/a5/todos`;
   const [todos, setTodos] = useState([]);
   const postTodo = async () => {

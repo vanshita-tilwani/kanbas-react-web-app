@@ -1,10 +1,10 @@
-import db from "../../database";
 import { useParams } from "react-router-dom";
 import { FaFileImport, FaFileExport, FaFilter, FaCog, FaArrowRight} from "react-icons/fa";
 import "./index.css";
 
 function Grades() {
     const { courseId } = useParams();
+    const db = {};
     const assignments = db.assignments.filter((assignment) => assignment.course === courseId);
     const enrollments = db.enrollments.filter((enrollment) => enrollment.course === courseId);
     return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const BASE_URL = "http://localhost:4000" //https://kanbas-node-server-app-ztc3.onrender.com
+const BASE_URL = process.env.REACT_APP_API_BASE; //https://kanbas-node-server-app-ztc3.onrender.com
 
 function WorkingWithObjects() {
   const [assignment, setAssignment] = useState({

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-const BASE_URL = "http://localhost:4000" //https://kanbas-node-server-app-ztc3.onrender.com
+const BASE_URL = process.env.REACT_APP_API_BASE //https://kanbas-node-server-app-ztc3.onrender.com
 
 function EncodingParametersInURLs() {
   const [a, setA] = useState(34);

@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import store from "./store";
 import { Provider } from "react-redux";
 import axios from "axios";
+import Account from "./account";
 
 function Kanbas() {
    const { pathname } = useLocation();
@@ -16,7 +17,7 @@ function Kanbas() {
    var currentPage = path[path.length - 1];
 
    const [courses, setCourses] = useState([]);
-   var BASE_URL = "http://localhost:4000"; //"https://kanbas-node-server-app-ztc3.onrender.com"
+   var BASE_URL = process.env.REACT_APP_API_BASE; //"https://kanbas-node-server-app-ztc3.onrender.com"
    const URL = `${BASE_URL}/api/courses`;
    const findAllCourses = async () => {
     const response = await axios.get(URL);
@@ -24,6 +25,7 @@ function Kanbas() {
    };
    useEffect(() => {
     findAllCourses();
+    // eslint-disable-next-line
    }, []);
 
    const [course, setCourse] = useState({
@@ -63,8 +65,9 @@ function Kanbas() {
             </div>
             <div className={`kanbas-layout-wrapper ${currentPage === "Home" ? 'home-hidden-kanbas-layout-wrapper' : ''} ${"ChevronBars".includes(currentPage) ? 'chevron-bars-hidden-kanbas-layout-wrapper' : ''}`}>
                <Routes>
-                  <Route path="/" element={<Navigate to="Dashboard" />} />
-                  <Route path="Account" element={<h1>Account</h1>} />
+                  <Route path="/" element={<Navigate to="Account" />} />
+                  <Route path="Account" element={<Account></Account>} />
+                  <Route path="Account/:id" element={<Account />} />
                   <Route path="Dashboard" element={
                      <Dashboard
                         courses={courses}
@@ -76,6 +79,7 @@ function Kanbas() {
                   } />
                   <Route path="Courses" element={<h1>Courses</h1>} />
                   <Route path="Courses/:courseId/*" element={<Courses courses={courses} />} />
+
                </Routes>
             </div>
          </div>

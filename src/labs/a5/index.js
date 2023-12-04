@@ -1,7 +1,7 @@
 import EncodingParametersInURLs from "./EncodingParametersInURLs";
 import WorkingWithArrays from "./WorkingWithArrays";
 import WorkingWithObjects from "./WorkingWithObjects";
-const BASE_URL = "http://localhost:4000" //https://kanbas-node-server-app-ztc3.onrender.com
+const BASE_URL = process.env.REACT_APP_API_BASE; //https://kanbas-node-server-app-ztc3.onrender.com
 
 function Assignment5() {
     return (

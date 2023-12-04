@@ -10,7 +10,7 @@ import Grades from "./grades";
 
 function Courses() {
   const { courseId } = useParams();
-  var BASE_URL = "http://localhost:4000"; //"https://kanbas-node-server-app-ztc3.onrender.com"
+  var BASE_URL = process.env.REACT_APP_API_BASE; //"https://kanbas-node-server-app-ztc3.onrender.com"
   const URL = `${BASE_URL}/api/courses`;
   const [course, setCourse] = useState({});
   const findCourseById = async (courseId) => {

@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:4000" //https://kanbas-node-server-app-ztc3.onrender.com
+const BASE_URL = process.env.REACT_APP_API_BASE //https://kanbas-node-server-app-ztc3.onrender.com
 const COURSES_URL = `${BASE_URL}/api/courses`
 const MODULES_URL = `${BASE_URL}/api/modules`;
 
