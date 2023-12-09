@@ -5,7 +5,7 @@ const request = axios.create({
   withCredentials: true,
 });
 
-export const signin = async (user) => {
+export const login = async (user) => {
   const response = await request.post(`${USERS_API}/signin`, user);
   return response.data;
 };
@@ -35,7 +35,7 @@ export const createUser = async (user) => {
   return response.data;
 };
 
-export const signup = async (user) => {
+export const register = async (user) => {
   const response = await request.post(`${USERS_API}/signup`, user);
   return response.data;
 };

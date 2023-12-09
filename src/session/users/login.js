@@ -9,7 +9,7 @@ function Login() {
   const navigate = useNavigate();
   const login = async () => {
     try {
-      await client.signin(user);
+      await client.login(user);
       navigate("/kanbas/account");
     } catch (err) {
       setError(err.response.data.message);

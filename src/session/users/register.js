@@ -8,7 +8,7 @@ function Register() {
   const navigate = useNavigate();
   const register = async () => {
     try {
-      await client.signup(user);
+      await client.register(user);
       navigate("/kanbas/account");
     } catch (err) {
       setError(err.response.data.message);
