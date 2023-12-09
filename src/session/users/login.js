@@ -3,11 +3,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
-function Signin() {
+function Login() {
   const [error, setError] = useState("");
   const [user, setUser] = useState({ username: "", password: "" });
   const navigate = useNavigate();
-  const signin = async () => {
+  const login = async () => {
     try {
       await client.signin(user);
       navigate("/kanbas/account");
@@ -39,7 +39,7 @@ function Signin() {
           placeholder="Enter your password"
           className="form-control mb-3"
         />
-      <button onClick={signin} style={{marginLeft: "100px"}} className="btn btn-danger w-50 mb-6">
+      <button onClick={login} style={{marginLeft: "100px"}} className="btn btn-danger w-50 mb-6">
         Login to Kanbas
       </button>
       </div>
@@ -48,4 +48,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default Login;
