@@ -1,0 +1,17 @@
+.login_container {
+  width: 40%;
+  float: left;
+  padding: 40px;
+  background-color: black;
+  margin: 40px;
+}
+
+.white_font {
+  color: white;
+}
+
+.main_screen {
+  background-image: url("https://bpb-us-w2.wpmucdn.com/sites.northeastern.edu/dist/8/1847/files/2022/03/canvas-banner1.jpg");
+  height: 100%;
+  overflow: scroll;
+}

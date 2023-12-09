@@ -1,6 +1,8 @@
 import * as client from "./client";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./style.css";
+
 function Signin() {
   const [error, setError] = useState("");
   const [user, setUser] = useState({ username: "", password: "" });
@@ -15,25 +17,32 @@ function Signin() {
   };
 
   return (
-    <div className="w-50">
-      <h1>Signin</h1>
+    <div className="main_container">
+
+      <div className="login_container">
+      <h3 className="white_font">Unlock the full potential of Kanbas!</h3>
+      <p className="white_font">
+      Kanbas is the home base for all Northeastern courses. Faculty and student resources are available to help maximize teaching and learning on the platform.
+      </p>
       {error && <div className="alert alert-danger">{error}</div>}
       <input
         value={user.username}
         onChange={(e) => setUser({ ...user, username: e.target.value })}
-        placeholder="username"
-        className="form-control mb-2"
+        placeholder="Enter your username"
+        className="form-control mb-3"
       />
       <input
         value={user.password}
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         type="password"
-        placeholder="password"
-        className="form-control mb-2"
+        placeholder="Enter your password"
+        className="form-control mb-3"
       />
-      <button onClick={signin} className="btn btn-primary w-100">
-        Signin
+      <button onClick={signin} className="btn btn-danger w-100 mb-3">
+        Login to Kanbas
       </button>
+      </div>
+      
     </div>
   );
 }
