@@ -28,7 +28,7 @@ function Login() {
           value={user.username}
           onChange={(e) => setUser({ ...user, username: e.target.value })}
           placeholder="Enter your username"
-          className="form-control mb-3"
+          className="form-control mb-2"
         />
         <label className="red_font mb-1" htmlFor="password">Password</label>
         <input
