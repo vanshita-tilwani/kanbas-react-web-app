@@ -4,10 +4,15 @@
   padding: 40px;
   background-color: black;
   margin: 40px;
+  border-radius: 30px;
 }
 
 .white_font {
   color: white;
+}
+
+.red_font {
+  color: #dc3545;
 }
 
 .main_screen {

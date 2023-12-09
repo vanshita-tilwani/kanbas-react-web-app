@@ -17,28 +17,29 @@ function Signin() {
   };
 
   return (
-    <div className="main_container">
-
+    <div>
       <div className="login_container">
-      <h3 className="white_font">Unlock the full potential of Kanbas!</h3>
-      <p className="white_font">
-      Kanbas is the home base for all Northeastern courses. Faculty and student resources are available to help maximize teaching and learning on the platform.
-      </p>
-      {error && <div className="alert alert-danger">{error}</div>}
-      <input
-        value={user.username}
-        onChange={(e) => setUser({ ...user, username: e.target.value })}
-        placeholder="Enter your username"
-        className="form-control mb-3"
-      />
-      <input
-        value={user.password}
-        onChange={(e) => setUser({ ...user, password: e.target.value })}
-        type="password"
-        placeholder="Enter your password"
-        className="form-control mb-3"
-      />
-      <button onClick={signin} className="btn btn-danger w-100 mb-3">
+        <h3 className="white_font">Unlock the full potential of Kanbas!</h3>
+        <p className="white_font">Kanbas is the home base for all Northeastern courses. Faculty and student resources are available to help maximize teaching and learning on the platform.</p>
+        {error && <div className="alert alert-danger">{error}</div>}
+        <label className="red_font mb-1" htmlFor="username">Username</label>
+        <input
+          id="username"
+          value={user.username}
+          onChange={(e) => setUser({ ...user, username: e.target.value })}
+          placeholder="Enter your username"
+          className="form-control mb-3"
+        />
+        <label className="red_font mb-1" htmlFor="password">Password</label>
+        <input
+          id="password"
+          value={user.password}
+          onChange={(e) => setUser({ ...user, password: e.target.value })}
+          type="password"
+          placeholder="Enter your password"
+          className="form-control mb-3"
+        />
+      <button onClick={signin} style={{marginLeft: "100px"}} className="btn btn-danger w-50 mb-6">
         Login to Kanbas
       </button>
       </div>
