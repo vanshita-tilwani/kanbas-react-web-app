@@ -5,7 +5,7 @@ function Header() {
   const navigate = useNavigate();
   const register = async () => {
     try {
-      navigate("/session/signup");
+      navigate("/session/register");
     } catch (err) {
     }
   };

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as client from "./client";
 
-function Signup() {
+function Register() {
   const [error, setError] = useState("");
   const [user, setUser] = useState({ username: "", password: "" });
   const navigate = useNavigate();
-  const signup = async () => {
+  const register = async () => {
     try {
       await client.signup(user);
       navigate("/kanbas/account");
@@ -16,7 +16,7 @@ function Signup() {
   };
   return (
     <div className="w-50">
-      <h1>Signup</h1>
+      <h1>Register</h1>
       {error && <div className="alert alert-danger">{error}</div>}
       <input
         value={user.username}
@@ -31,11 +31,11 @@ function Signup() {
         placeholder="password"
         className="form-control mb-2"
       />
-      <button onClick={signup} className="btn btn-primary w-100">
-        Signup
+      <button onClick={register} className="btn btn-primary w-100">
+        Register
       </button>
     </div>
   );
 }
 
-export default Signup;
+export default Register;
