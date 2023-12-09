@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import db from "../Database";
 import "./index.css";
 import { PiNotePencil } from "react-icons/pi";
 import { React } from "react";
