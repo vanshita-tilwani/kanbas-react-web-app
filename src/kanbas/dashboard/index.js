@@ -54,6 +54,11 @@ function Dashboard({ courses, course, setCourse, addNewCourse,
                     onChange={(e) => setCourse({ ...course, endDate: e.target.value })} />
                 </div>
                 <div className="row p-2">
+                    <label className="col-3 white_font" style={{alignSelf : "center", textAlign: "right", font:"18px Lato"}}>Credit</label>
+                    <input value={course.credits} className="form-control col-6 width_55" type="number"
+                    onChange={(e) => setCourse({ ...course, credits: e.target.value })} />
+                </div>
+                <div className="row p-2">
                 <button className="btn btn-success col-4" style={{marginLeft :"50px", font:"18px Lato"}} onClick={addNewCourse} >
                     Add
                 </button>
