@@ -10,7 +10,7 @@ function Login() {
   const login = async () => {
     try {
       await client.login(user);
-      navigate("/kanbas/account");
+      navigate("/kanbas/dashboard");
     } catch (err) {
       setError(err.response.data.message);
     }

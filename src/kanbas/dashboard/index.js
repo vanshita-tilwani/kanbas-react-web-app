@@ -1,14 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./index.css";
 import { PiNotePencil } from "react-icons/pi";
 import { React } from "react";
+import * as client from "../../session/users/client";
+import { useState, useEffect } from "react";
 
 function Dashboard({ courses, course, setCourse, addNewCourse,
     deleteCourse, updateCourse }
 ) {
+    
+    const [account, setAccount] = useState(null);
+    const navigate = useNavigate();
+    const getLoggedInUser = async () => {
+        try {
+            const account = await client.account();
+            setAccount(account);
+        } catch (err) {
+          navigate("/session/login");
+        }
+      };
+
+    useEffect(() => {
+        getLoggedInUser();
+        // eslint-disable-next-line
+      }, []);
+
     return (
         <div className="dashboard">
-            <div className="kanbas-navigation-toggle">
+            {account && account.role === "ADMIN" && (<div className="kanbas-navigation-toggle">
                 <h1>Dashboard</h1>
                 <h5>Course</h5>
                 <input value={course.name} className="form-control small-margin-bottom"
@@ -26,7 +45,7 @@ function Dashboard({ courses, course, setCourse, addNewCourse,
                     Update
                 </button>
                 <hr />
-            </div>
+            </div>)}
             <div className="dashboard-main-content">
                 <h2>
                     Published Courses ({courses.length})

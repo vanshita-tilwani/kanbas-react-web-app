@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as client from "../../session/users/client";
 import AccountHeader from "./AccountHeader";
 import "./index.css";
@@ -7,11 +7,6 @@ import "./index.css";
 function Account() {
   const { id } = useParams();
   
-  const signout = async () => {
-    await client.signout();
-    navigate("/session/home");
-  };
-
   const [account, setAccount] = useState(null);
   const navigate = useNavigate();
   const fetchAccount = async (id) => {

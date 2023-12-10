@@ -1,7 +1,7 @@
 
 
 import Register from "./users/register";
-import Account from "./users/account";
+import Account from "../kanbas/account/index";
 import { Routes, Route, Navigate } from "react-router-dom";
 import UserTable from "./users/table";
 import Home from "./users/home";
