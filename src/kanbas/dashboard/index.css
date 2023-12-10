@@ -1,10 +1,15 @@
 .dashboard .kanbas-navigation-toggle h1 {
   font-weight: 200 !important;
 }
-
+.white_font {
+  color: white;
+  font: "20px Lato";
+}
 .dashboard .kanbas-navigation-toggle {
   margin: 20px 20px 10px 20px;
   min-height: 4.5rem;
+  background-color: black;
+  border-radius: 30px;
 }
 
 .dashboard .dashboard-main-content {
@@ -47,4 +52,8 @@
 
 .dashboard .small-margin-bottom {
   margin-bottom: 5px;
+}
+
+.width_55 {
+  width: 55% !important;
 }

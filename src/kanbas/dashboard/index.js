@@ -4,6 +4,7 @@ import { PiNotePencil } from "react-icons/pi";
 import { React } from "react";
 import * as client from "../../session/users/client";
 import { useState, useEffect } from "react";
+import DashboardHeader from "./DashboardHeader";
 
 function Dashboard({ courses, course, setCourse, addNewCourse,
     deleteCourse, updateCourse }
@@ -27,27 +28,43 @@ function Dashboard({ courses, course, setCourse, addNewCourse,
 
     return (
         <div className="dashboard">
-            {account && account.role === "ADMIN" && (<div className="kanbas-navigation-toggle">
-                <h1>Dashboard</h1>
-                <h5>Course</h5>
-                <input value={course.name} className="form-control small-margin-bottom"
-                    onChange={(e) => setCourse({ ...course, name: e.target.value })} />
-                <input value={course.number} className="form-control small-margin-bottom"
+            <DashboardHeader/>
+            {account && account.role === "ADMIN" && (<div className="kanbas-navigation-toggle w-50">
+                <h5 className="white_font" style={{textAlign : "center", font:"20px Lato"}}>Course Management</h5>
+                <div className="row p-2">
+                    <label className="col-3 white_font" style={{alignSelf : "center", textAlign: "right", font:"18px Lato"}}>Course Name</label>
+                    <input value={course.name} className="form-control col-6 width_55"
+                        onChange={(e) => setCourse({ ...course, name: e.target.value })} />
+                </div>
+                <div className="row p-2">
+                    <label className="col-3 white_font" style={{alignSelf : "center", textAlign: "right", font:"18px Lato"}}>Course Number</label>
+                    <input value={course.number} className="form-control col-6 width_55"
                     onChange={(e) => setCourse({ ...course, number: e.target.value })} />
-                <input value={course.startDate} className="form-control small-margin-bottom" type="date"
+                </div>
+
+                <div className="row p-2">
+                    <label className="col-3 white_font" style={{alignSelf : "center", textAlign: "right", font:"18px Lato"}}>Start Date</label>
+                    <input value={course.startDate} className="form-control col-6 width_55" type="date"
                     onChange={(e) => setCourse({ ...course, startDate: e.target.value })} />
-                <input value={course.endDate} className="form-control small-margin-bottom" type="date"
+                </div>
+                
+                <div className="row p-2">
+                    <label className="col-3 white_font" style={{alignSelf : "center", textAlign: "right", font:"18px Lato"}}>End Date</label>
+                    <input value={course.endDate} className="form-control col-6 width_55" type="date"
                     onChange={(e) => setCourse({ ...course, endDate: e.target.value })} />
-                <button className="btn btn-success small-margin-right" onClick={addNewCourse} >
+                </div>
+                <div className="row p-2">
+                <button className="btn btn-success col-4" style={{marginLeft :"50px", font:"18px Lato"}} onClick={addNewCourse} >
                     Add
                 </button>
-                <button className="btn btn-primary" onClick={updateCourse} >
+                <button className="btn btn-primary col-4" style={{marginLeft :"50px", font:"18px Lato"}} onClick={updateCourse} >
                     Update
                 </button>
+                </div>
                 <hr />
             </div>)}
             <div className="dashboard-main-content">
-                <h2>
+                <h2 style={{font: "20px Lato"}}>
                     Published Courses ({courses.length})
                 </h2>
                 <hr />
