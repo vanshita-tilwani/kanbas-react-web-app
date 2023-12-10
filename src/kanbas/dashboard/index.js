@@ -80,7 +80,7 @@ function Dashboard({ courses, course, setCourse, addNewCourse,
                                     <div>{course.number}</div>
                                     <div>From {course.startDate} to {course.endDate}</div>
                                     <PiNotePencil />
-                                    <div>
+                                    {account && account.role === "ADMIN" && (<div>
                                         <button className="btn btn-success small-margin-right"
                                             onClick={(event) => {
                                                 event.preventDefault();
@@ -95,7 +95,7 @@ function Dashboard({ courses, course, setCourse, addNewCourse,
                                             }}>
                                             Delete
                                         </button>
-                                    </div>
+                                    </div>)}
                                 </div>
                             </div>
                         ))}
