@@ -22,7 +22,7 @@ function Login() {
         <h3 className="white_font">Unlock the full potential of Kanbas!</h3>
         <p className="white_font">Kanbas is the home base for all Northeastern courses. Faculty and student resources are available to help maximize teaching and learning on the platform.</p>
         {error && <div className="alert alert-danger">{error}</div>}
-        <label className="red_font mb-1" htmlFor="username">Username</label>
+        <label className="white_font mb-1" htmlFor="username">Username</label>
         <input
           id="username"
           value={user.username}
@@ -30,7 +30,7 @@ function Login() {
           placeholder="Enter your username"
           className="form-control mb-2"
         />
-        <label className="red_font mb-1" htmlFor="password">Password</label>
+        <label className="white_font mb-1" htmlFor="password">Password</label>
         <input
           id="password"
           value={user.password}

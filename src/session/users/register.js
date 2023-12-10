@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as client from "./client";
+import Header from "./header";
+import "./style.css";
 
 function Register() {
   const [error, setError] = useState("");
@@ -15,12 +17,14 @@ function Register() {
     }
   };
   return (
-    <div className="login_container">
+    <div className="main_screen" >
+      <Header isHomeScreen={false}/>
+      <div className="login_container">
       <h3 className="white_font">Kanbas Registration</h3>
       <p className="white_font">Experience the hustle! Register and keep track of your day to day schedule</p>
 
       {error && <div className="alert alert-danger">{error}</div>}
-      <label className="red_font mb-1" htmlFor="username">Username</label>
+      <label className="white_font mb-1" htmlFor="username">Username</label>
         <input
           id="username"
           value={user.username}
@@ -28,7 +32,7 @@ function Register() {
           placeholder="Enter your username"
           className="form-control mb-2"
         />
-        <label className="red_font mb-1" htmlFor="password">Password</label>
+        <label className="white_font mb-1" htmlFor="password">Password</label>
         <input
           id="password"
           value={user.password}
@@ -37,7 +41,7 @@ function Register() {
           placeholder="Enter your password"
           className="form-control mb-2"
         />
-        <label className="red_font mb-1" htmlFor="firstname">Firstname</label>
+        <label className="white_font mb-1" htmlFor="firstname">Firstname</label>
         <input
           id="firstname"
           value={user.firstName}
@@ -45,18 +49,20 @@ function Register() {
           placeholder="Enter your first name"
           className="form-control mb-2"
         />
-        <label className="red_font mb-1" htmlFor="lastname">Lastname</label>
+        <label className="white_font mb-1" htmlFor="lastname">Lastname</label>
         <input
           id="lastname"
-          value={user.firstName}
+          value={user.lastName}
           onChange={(e) => setUser({ ...user, lastName: e.target.value })}
           placeholder="Enter your last name"
-          className="form-control mb-2"
+          className="form-control mb-3"
         />
       <button onClick={register} style={{marginLeft: "100px"}} className="btn btn-danger w-50 mb-6">
         Register to Kanbas
       </button>
     </div>
+    </div>
+    
   );
 }
 
