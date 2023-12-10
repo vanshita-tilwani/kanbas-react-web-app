@@ -76,7 +76,7 @@ function Account() {
                   setAccount({ ...account, firstName: e.target.value })
                 }
                 value={account.firstName}
-                type="password"
+                type="text"
                 placeholder="Password" />
           </div>
 
@@ -89,7 +89,7 @@ function Account() {
                   setAccount({ ...account, lastName: e.target.value })
                 }
                 value={account.lastName}
-                type="password"
+                type="text"
                 placeholder="Password" />
           </div>
 
