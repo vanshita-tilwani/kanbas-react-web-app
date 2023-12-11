@@ -5,7 +5,7 @@ import { TfiDashboard } from "react-icons/tfi";
 import "./index.css";
 
 function KanbasNavigation() {
-    const links = ["Account", "Home", "Courses/RS101"];
+    const links = ["Account", "Home", "Courses/RS4550"];
     const linkToIconMap = {
       
         "Account": <BiUserCircle className="wd-icon" />,
