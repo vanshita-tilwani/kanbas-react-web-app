@@ -31,15 +31,23 @@ function Dashboard({ courses, course, setCourse, addNewCourse,
             <DashboardHeader/>
             {account && account.role === "ADMIN" && (<div className="kanbas-navigation-toggle w-50">
                 <h5 className="white_font" style={{textAlign : "center", font:"20px Lato"}}>Course Management</h5>
+                
+                <div className="row p-2">
+                    <label className="col-3 white_font" style={{alignSelf : "center", textAlign: "right", font:"18px Lato"}}>Course Number</label>
+                    <input value={course.number} className="form-control col-6 width_55"
+                    onChange={(e) => setCourse({ ...course, number: e.target.value })} />
+                </div>
+
                 <div className="row p-2">
                     <label className="col-3 white_font" style={{alignSelf : "center", textAlign: "right", font:"18px Lato"}}>Course Name</label>
                     <input value={course.name} className="form-control col-6 width_55"
                         onChange={(e) => setCourse({ ...course, name: e.target.value })} />
                 </div>
+
                 <div className="row p-2">
-                    <label className="col-3 white_font" style={{alignSelf : "center", textAlign: "right", font:"18px Lato"}}>Course Number</label>
-                    <input value={course.number} className="form-control col-6 width_55"
-                    onChange={(e) => setCourse({ ...course, number: e.target.value })} />
+                    <label className="col-3 white_font" style={{alignSelf : "center", textAlign: "right", font:"18px Lato"}}>Course Description</label>
+                    <input value={course.description} className="form-control col-6 width_55"
+                        onChange={(e) => setCourse({ ...course, description: e.target.value })} />
                 </div>
 
                 <div className="row p-2">
