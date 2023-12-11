@@ -53,10 +53,7 @@ function Assignments() {
           placeholder="Search for Assignment"
         />
         <div className="assignment-buttons">
-          <button className="btn btn-light assignment-button">
-            <FaPlus className="icon-margin" />
-            Group
-          </button>
+          
           <button className="btn btn-danger assignment-button" onClick={handleAddAssignment}>
             <FaPlus className="icon-margin" />
             Assignment

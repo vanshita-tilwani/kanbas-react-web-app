@@ -2,7 +2,7 @@ import { Link, useParams, useLocation } from "react-router-dom";
 import "./index.css";
 
 function CourseNavigation() {
-  const links = ["Home", "Modules", "Piazza", "Zoom Meetings", "Assignments", "Quizzes", "Grades", "People"];
+  const links = ["Home", "Modules", "Assignments", "Quizzes", "Grades"];
   const { courseId } = useParams();
   const { pathname } = useLocation();
   return (
