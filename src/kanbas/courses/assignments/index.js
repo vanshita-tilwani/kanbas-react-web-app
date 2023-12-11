@@ -58,9 +58,6 @@ function Assignments() {
             <FaPlus className="icon-margin" />
             Assignment
           </button>
-          <button className="btn btn-light assignment-button">
-            <FaEllipsisVertical />
-          </button>
         </div>
       </div>
       <hr />
