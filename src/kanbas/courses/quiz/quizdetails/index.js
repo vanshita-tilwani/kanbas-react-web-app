@@ -1,8 +1,12 @@
 
 import "./index.css";
-import { FaPlus} from "react-icons/fa";
+import { Link , useParams} from "react-router-dom";
+import { CiEdit } from "react-icons/ci";
+import { FaCheckCircle} from "react-icons/fa";
 
 function QuizDetails() {
+  const { courseId } = useParams();
+  const {quizId} = useParams()
   return (
     <div className="assignment">
       <div className="d-flex justify-content-between">
@@ -10,17 +14,18 @@ function QuizDetails() {
         <div className="assignment-buttons">
           
           <button className="btn btn-danger assignment-button">
-            <FaPlus className="icon-margin" />
+            <FaCheckCircle className="icon-margin" />
             Published
           </button>
-          <button className="btn btn-danger assignment-button">
-            <FaPlus className="icon-margin" />
+          <button className="btn btn-light courses-home-module-button float-end">
+            
             Preview
           </button>
-          <button className="btn btn-danger assignment-button">
-            <FaPlus className="icon-margin" />
-            Edit
-          </button>
+          
+          <Link to={`/Kanbas/Courses/${courseId}/Quizzes/Edit/${quizId}`} className="btn btn-light courses-home-module-button float-end">
+            <CiEdit/>
+                  Edit
+                </Link>
         </div>
       </div>
       

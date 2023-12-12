@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { FaPlus, FaCheckCircle} from "react-icons/fa";
+import { FaCheckCircle} from "react-icons/fa";
 import {FaEllipsisVertical,FaX} from "react-icons/fa6";
 import "./quizdetailseditor.css";
 import { useSelector, useDispatch } from "react-redux";
