@@ -58,6 +58,41 @@ function QuizDetails() {
             </div>
 
             
+            <div className="row p-2">
+              <label className="col-3 assignment-edit-content-title align-self-center">View Responses</label>
+              <input disabled type="text" value="Always" className="col-3 form-control assignment-edit-content-form"  />
+            </div>
+
+            <div className="row p-2">
+              <label className="col-3 assignment-edit-content-title align-self-center">Show Correct Answers</label>
+              <input disabled type="text" value="Immediately" className="col-3 form-control assignment-edit-content-form"  />
+            </div>
+
+            <div className="row p-2">
+              <label className="col-3 assignment-edit-content-title align-self-center">One Question at a Time</label>
+              <input disabled type="Text" value="Yes" className="col-3 form-control assignment-edit-content-form"  />
+            </div>
+
+            <div className="row p-2">
+              <label className="col-3 assignment-edit-content-title align-self-center">Requires Lockdown Browser</label>
+              <input disabled type="text" value="No" className="col-3 form-control assignment-edit-content-form"  />
+            </div>
+
+            <div className="row p-2">
+              <label className="col-3 assignment-edit-content-title align-self-center">Required to View Results</label>
+              <input disabled type="text" value="No" className="col-3 form-control assignment-edit-content-form"  />
+            </div>
+
+            <div className="row p-2">
+              <label className="col-3 assignment-edit-content-title align-self-center">Webcam Required</label>
+              <input disabled type="text" value="No" className="col-3 form-control assignment-edit-content-form"  />
+            </div>
+
+            <div className="row p-2">
+              <label className="col-3 assignment-edit-content-title align-self-center">Lock Questions after Answering</label>
+              <input disabled type="text" value="No" className="col-3 form-control assignment-edit-content-form"  />
+            </div>
+
           </div>
           <div className="details-table">
           <table className="table table-striped table-bordered">

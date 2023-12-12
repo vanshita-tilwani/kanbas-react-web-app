@@ -35,7 +35,7 @@ function Account() {
   return (
     <div>
     <AccountHeader account={account}/>
-    <div className="w-50 assignment-editor" >
+    <div className="w-50 account-editor" >
       <h3 className="white_font" style={{alignSelf : "center"}}>Account Information</h3>
       {account &&(
       <div>
@@ -43,17 +43,17 @@ function Account() {
         <div className="container">
           <div className="row p-2">
             <label htmlFor="username"
-                className="col-3 assignment-edit-content-title align-self-center white_font">Username</label>
+                className="col-3 account-edit-content-title align-self-center white_font">Username</label>
             <input id="username"
-                className="form-control col-6 assignment-edit-content-form" value={account.password}
+                className="form-control col-6 account-edit-content-form" value={account.password}
                 readOnly placeholder="username" />
           </div>
 
           <div className="row p-2">
             <label htmlFor="password"
-                className="col-3 assignment-edit-content-title align-self-center white_font" >Password</label>
+                className="col-3 account-edit-content-title align-self-center white_font" >Password</label>
             <input id="password"
-                className="form-control col-6 assignment-edit-content-form" 
+                className="form-control col-6 account-edit-content-form" 
                 onChange={(e) =>
                   setAccount({ ...account, password: e.target.value })
                 }
@@ -64,9 +64,9 @@ function Account() {
 
           <div className="row p-2">
             <label htmlFor="firstname"
-                className="col-3 assignment-edit-content-title align-self-center white_font">FirstName</label>
+                className="col-3 account-edit-content-title align-self-center white_font">FirstName</label>
             <input id="firstname"
-                className="form-control col-6 assignment-edit-content-form" 
+                className="form-control col-6 account-edit-content-form" 
                 onChange={(e) =>
                   setAccount({ ...account, firstName: e.target.value })
                 }
@@ -77,9 +77,9 @@ function Account() {
 
           <div className="row p-2">
             <label htmlFor="lastname"
-                className="col-3 assignment-edit-content-title align-self-center white_font">LastName</label>
+                className="col-3 account-edit-content-title align-self-center white_font">LastName</label>
             <input id="lastname"
-                className="form-control col-6 assignment-edit-content-form" 
+                className="form-control col-6 account-edit-content-form" 
                 onChange={(e) =>
                   setAccount({ ...account, lastName: e.target.value })
                 }
@@ -90,9 +90,9 @@ function Account() {
 
           <div className="row p-2">
             <label htmlFor="dob"
-                className="col-3 assignment-edit-content-title align-self-center white_font">Date of Birth</label>
+                className="col-3 account-edit-content-title align-self-center white_font">Date of Birth</label>
             <input id="dob"
-                className="form-control col-6 assignment-edit-content-form" 
+                className="form-control col-6 account-edit-content-form" 
                 onChange={(e) => setAccount({ ...account, dob: e.target.value })}
                 value={account.dob && account.dob.substring(0, 10)}
                 type="date"
@@ -101,9 +101,9 @@ function Account() {
 
           <div className="row p-2">
             <label htmlFor="email"
-                className="col-3 assignment-edit-content-title align-self-center white_font">Email</label>
+                className="col-3 account-edit-content-title align-self-center white_font">Email</label>
             <input id="email"
-                className="form-control col-6 assignment-edit-content-form mb-3" 
+                className="form-control col-6 account-edit-content-form mb-3" 
                 onChange={(e) => setAccount({ ...account, email: e.target.value })}
                 value={account.email}
                 type="email"
