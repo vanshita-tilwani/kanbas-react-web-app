@@ -1,0 +1,83 @@
+.quiz-details-editor {
+  padding: 0 24px;
+  float: left;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.quiz-details-editor .quiz-details-editor-header-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.quiz-details-editor .icon-margin {
+  margin-right: 14px;
+}
+
+.quiz-details-editor .icon-margin-small {
+  margin-right: 4px;
+}
+
+.quiz-details-editor .quiz-details-editor-published-text {
+  color: green;
+}
+
+.quiz-details-editor .quiz-details-title {
+  padding: 0;
+}
+
+.quiz-details-editor .quiz-details-edit-content-title {
+  text-align: right;
+  padding-right: 10px !important;
+}
+
+.quiz-details-editor .quiz-details-edit-content-form {
+  width: 55% !important;
+}
+
+.quiz-details-editor .submission-type-continar {
+  border: 1px lightgray solid;
+  border-radius: 6px;
+}
+
+.quiz-details-editor #assignment-submission-type-text-field {
+  width: 70%;
+}
+
+.quiz-details-editor .quiz-details-edit-online-entry-text {
+  font-weight: bold;
+}
+
+.quiz-details-editor .quiz-details-edit-content-half-size-date {
+  width: 49% !important;
+  margin-right: 1%;
+}
+
+.quiz-details-editor .add-button {
+  margin-top: 20px !important;
+  border-radius: 3px !important;
+}
+
+.quiz-details-editor .save-button {
+  margin-left: 5px;
+  font-weight: 300 !important;
+}
+
+.quiz-details-editor .courses-home-module-button {
+  margin: 2px;
+  border-radius: 3px !important;
+}
+
+.quiz-details-editor .checkbox-margin-right {
+  margin-right: 5px;
+}
+
+.quiz-details-editor .checkbox-margin-left {
+  margin-left: 5px;
+}
+
+.quiz-details-editor .x-icon {
+  margin: 2px 0 5px 10px;
+  font-size: 10px;
+}
