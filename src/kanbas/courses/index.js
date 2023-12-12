@@ -8,6 +8,7 @@ import Assignments from "./assignments";
 import AssignmentEditor from "./assignments/assignmenteditor";
 import Grades from "./grades";
 import Quiz from "./quiz";
+import QuizDetails from "./quiz/quizdetails";
 
 function Courses() {
   const { courseId } = useParams();
@@ -27,7 +28,7 @@ function Courses() {
 
   return (
     <div>
-      <h1>Course {course.name}</h1>
+      <h2 style={{font : "20px Lato", margin: "20px"}}>Course {course.name}</h2>
       <CourseNavigation />
       <div>
         <div
@@ -46,6 +47,7 @@ function Courses() {
                    element={<AssignmentEditor/>}/>
             <Route path="Grades" element={<Grades />} />
             <Route path="Quizzes" element={<Quiz/>}/>
+            <Route path="Quizzes/Details/:quizId" element={<QuizDetails/>}/>
           </Routes>
         </div>
       </div>

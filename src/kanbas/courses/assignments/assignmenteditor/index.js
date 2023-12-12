@@ -38,7 +38,7 @@ function AssignmentEditor() {
     } else {
       await handleAddAssignment();
     }
-    navigate(`/kanbas/courses/${courseId}/assignments`);
+    navigate(`/Kanbas/Courses/${courseId}/assignments`);
   };
 
   return (
@@ -171,7 +171,7 @@ function AssignmentEditor() {
                 <button onClick={handleSave} className="btn btn-danger float-end courses-home-module-button save-button">
                   Save
                 </button>
-                <Link to={`/kanbas/courses/${courseId}/assignments`} className="btn btn-light courses-home-module-button float-end">
+                <Link to={`/Kanbas/Courses/${courseId}/assignments`} className="btn btn-light courses-home-module-button float-end">
                   Cancel
                 </Link>
               </div>

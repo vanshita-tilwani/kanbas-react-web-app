@@ -15,7 +15,7 @@ function KanbasNavigation() {
     }
 
     const { pathname } = useLocation();
-
+    console.log(pathname);
     return (
         <div className="kanbas-navigation-side-bar">
             <div>
@@ -25,8 +25,8 @@ function KanbasNavigation() {
                 {links.map((link, index) => (
                     <div key={index} className="list-group-item">
                         <Link
-                            to={`/Kanbas/${link}`} className={`list-group-item ${pathname.includes(
-                                links[index]
+                            to={`/Kanbas/${link}`} className={`list-group-item ${pathname && pathname.split("Kanbas/")[1].split("/")[0].includes(
+                                links[index].split("/")[0]
                             ) && "active"}`}>
                             <div className="d-flex flex-column">
                             {linkToIconMap[link.split("/")[0]]}

@@ -11,7 +11,7 @@ function Register() {
   const register = async () => {
     try {
       await client.register(user);
-      navigate("/kanbas/home");
+      navigate("/Kanbas/Home");
     } catch (err) {
       setError(err.response.data.message);
     }

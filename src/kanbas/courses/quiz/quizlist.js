@@ -74,7 +74,7 @@ function QuizList() {
                     <Link
                       key={quiz._id}  
                       onClick={() => dispatch(setQuiz(quiz))}
-                      to={`/kanbas/courses/${courseId}/assignments/${quiz._id}`}>
+                      to={`/Kanbas/Courses/${courseId}/Quizzes/Details/${quiz._id}`}>
                       {quiz.name}
                     </Link>
                   </div>

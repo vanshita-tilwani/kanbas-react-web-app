@@ -32,7 +32,7 @@ function Assignments() {
       _id: new Date().getTime().toString(),
     };
     dispatch(setAssignment(newAssignment));
-    navigate(`/kanbas/courses/${courseId}/assignments/${newAssignment._id}`);
+    navigate(`/Kanbas/Courses/${courseId}/assignments/${newAssignment._id}`);
   }
  
   const handleDeleteAssignment = (moduleId) => {
@@ -87,7 +87,7 @@ function Assignments() {
                     <Link
                       key={assignment._id}  
                       onClick={() => dispatch(setAssignment(assignment))}
-                      to={`/kanbas/courses/${courseId}/assignments/${assignment._id}`}>
+                      to={`/Kanbas/Courses/${courseId}/assignments/${assignment._id}`}>
                       {assignment.title}
                     </Link>
                   </div>

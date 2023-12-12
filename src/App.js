@@ -10,7 +10,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Navigate to="session" />} />
         <Route path="/session/*" element={<Session />} />
-          <Route path="/kanbas/*" element={<Kanbas />} />
+          <Route path="/Kanbas/*" element={<Kanbas />} />
         </Routes>
       </div>  
     </HashRouter>
