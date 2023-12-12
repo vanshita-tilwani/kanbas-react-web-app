@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { FaCheckCircle} from "react-icons/fa";
+import { FaCheckCircle, FaRegTimesCircle} from "react-icons/fa";
 import {FaEllipsisVertical,FaX} from "react-icons/fa6";
 import "./quizdetailseditor.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -45,11 +45,21 @@ function QuizDetailsEditor() {
   return (
     <div className="quiz-details-editor">
       <div className="quiz-details-editor-header-buttons">
-        <FaCheckCircle className="align-self-center icon-margin-small" style={{ color: "green" ,opacity: (quiz.published ? "1.0" : "0.3")}} />
-        <div className="quiz-details-editor-published-text align-self-center icon-margin" >{quiz.published ? "Published" : "UnPublished"}</div>
+      { quiz.published && (<div style={{display : "flex"}}>
+        <FaCheckCircle className="align-self-center icon-margin-small" style={{ color: "green"}} />
+        <div className="quiz-details-editor-published-text align-self-center icon-margin" >Published</div>
         <button className="btn btn-light">
           <FaEllipsisVertical />
         </button>
+        </div>)}
+
+        { !quiz.published && (<div style={{display : "flex"}}>
+        <FaRegTimesCircle className="align-self-center icon-margin-small" />
+        <div className=" align-self-center icon-margin" >Not Published</div>
+        <button className="btn btn-light">
+          <FaEllipsisVertical />
+        </button>
+        </div>)}
         
       </div>
       <hr />
