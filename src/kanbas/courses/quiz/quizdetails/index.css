@@ -37,6 +37,9 @@ td {
 .quiz-details-main .quiz-details-button {
   margin: 2px;
   border-radius: 3px !important;
+  border: 1px solid;
+  border-color: #c7cdd1;
+  border-radius: 3px;
 }
 
 .quiz-detail-content-title {

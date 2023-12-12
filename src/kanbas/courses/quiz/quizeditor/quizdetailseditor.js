@@ -11,7 +11,7 @@ import {
   setQuiz,
 } from "../quizReducer";
 import * as service from "../client";
-
+import moment from "moment";
 
 function QuizDetailsEditor() {
   const { quizId } = useParams();
@@ -45,11 +45,12 @@ function QuizDetailsEditor() {
   return (
     <div className="quiz-details-editor">
       <div className="quiz-details-editor-header-buttons">
-        <FaCheckCircle className="align-self-center icon-margin-small" style={{ color: "green" }} />
-        <div className="quiz-details-editor-published-text align-self-center icon-margin">Published</div>
+        <FaCheckCircle className="align-self-center icon-margin-small" style={{ color: "green" ,opacity: (quiz.published ? "1.0" : "0.3")}} />
+        <div className="quiz-details-editor-published-text align-self-center icon-margin" >{quiz.published ? "Published" : "UnPublished"}</div>
         <button className="btn btn-light">
           <FaEllipsisVertical />
         </button>
+        
       </div>
       <hr />
       <div>
@@ -87,16 +88,20 @@ function QuizDetailsEditor() {
               
             <label className="col-3 quiz-details-edit-content-title"></label>
               <div className="quiz-details-edit-content-form">
-                <input type="checkbox" className="checkbox-margin-right" />
+                <input type="checkbox" checked={quiz.shuffleAnswers} className="checkbox-margin-right"
+                  onChange={(e) => dispatch(setQuiz({ ...quiz, shuffleAnswers: e.target.checked }))}
+                />
                 <label>Shuffle Questions</label>
               </div>
             </div>
             <div className="row p-2">
               <label className="col-3 quiz-details-edit-content-title"></label>
               <div className="quiz-details-edit-content-form">
-                <input type="checkbox" className="checkbox-margin-right" />
+                <input type="checkbox" checked={true} className="checkbox-margin-right" />
                 <label>Time Limit</label>
-                <input type="number" style={{width : "50px"}} className="checkbox-margin-left checkbox-margin-right" />
+                <input type="number"value={quiz.timeLimit} style={{width : "50px"}} 
+                  onChange={(e) => dispatch(setQuiz({ ...quiz, timeLimit: e.target.valueAsNumber }))}
+                  className="checkbox-margin-left checkbox-margin-right" />
                 <label className="col-3">Minutes</label>
               </div>
             </div>
@@ -104,7 +109,10 @@ function QuizDetailsEditor() {
             <div className="row p-2">
               <label className="col-3 quiz-details-edit-content-title"></label>
               <div className="quiz-details-edit-content-form">
-                <input type="checkbox" className="checkbox-margin-right" />
+                <input type="checkbox" checked={quiz.multipleAttempts} 
+                  onChange={(e) => dispatch(setQuiz({ ...quiz, multipleAttempts: e.target.checked }))}
+                  className="checkbox-margin-right"
+                />
                 <label>Allow Multiple Attempts</label>
               </div>
             </div>
@@ -122,20 +130,23 @@ function QuizDetailsEditor() {
                   </div>
                 </div>
                 <div className="row p-2">
-                  <div className="quiz-details-edit-online-entry-text">Due to</div>
+                  <div className="quiz-details-edit-online-entry-text">Due on</div>
                   
-                    <input className="form-control" type="date" id="text-fields-until" value={quiz.dueDate} 
-                    onChange={(e) => dispatch(setQuiz({ ...quiz, dueDate: e.target.value }))}/>
+                    <input className="form-control" type="date" id="text-fields-until" 
+                    value={moment(quiz.dueDate.toString()).utc().format('YYYY-MM-DD')}
+                    onChange={(e) => dispatch(setQuiz({ ...quiz, dueDate: e.target.valueAsDate }))}/>
                 </div>
                 <div className="row p-2">
                   <div className="col-6 quiz-details-edit-online-entry-text">Available from</div>
                   <div className="col-6 quiz-details-edit-online-entry-text">Until</div>
                   <input className="form-control quiz-details-edit-content-half-size-date"
-                    type="date" id="text-fields-until" value={quiz.availableFromDate} 
-                    onChange={(e) => dispatch(setQuiz({ ...quiz, availableFromDate: e.target.value }))}/>
+                    type="date" id="text-fields-until" 
+                    value={moment(quiz.availableFrom.toString()).utc().format('YYYY-MM-DD')}
+                    onChange={(e) => dispatch(setQuiz({ ...quiz, availableFrom: e.target.valueAsDate }))}/>
                   <input className="form-control quiz-details-edit-content-half-size-date"
-                    type="date" id="text-fields-until" value={quiz.availableUntilDate} 
-                    onChange={(e) => dispatch(setQuiz({ ...quiz, availableUntilDate: e.target.value }))}/>
+                    type="date" id="text-fields-until" 
+                    value={moment(quiz.availableUntil.toString()).utc().format('YYYY-MM-DD')}
+                    onChange={(e) => dispatch(setQuiz({ ...quiz, availableUntil: e.target.valueAsDate }))}/>
                 </div>
                 
               </div>
