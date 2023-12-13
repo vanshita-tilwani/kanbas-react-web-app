@@ -5,6 +5,7 @@ import { FaCheckCircle, FaRegTimesCircle} from "react-icons/fa";
 import {FaEllipsisVertical,FaX} from "react-icons/fa6";
 import "./quizdetailseditor.css";
 import { useSelector, useDispatch } from "react-redux";
+
 import {
   addQuiz,
   updateQuiz,
@@ -41,6 +42,16 @@ function QuizDetailsEditor() {
     }
     navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
   };
+
+  const handleSaveAndPublish = async() => {
+    const exisitingQuiz = quizzes.find((quiz) => quiz._id === quizId);
+    if (exisitingQuiz) {
+      await service.updateQuiz({...quiz, published : true});
+    } else {
+      await service.createQuiz(courseId, {...quiz, published : true})
+    }
+    navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
+  }
 
   return (
     <div className="quiz-details-editor">
@@ -174,7 +185,7 @@ function QuizDetailsEditor() {
                 <button onClick={handleSave} className="btn btn-danger float-end courses-home-module-button save-button">
                   Save
                 </button>
-                <button onClick={handleSave} className="btn btn-light courses-home-module-button float-end">
+                <button onClick={handleSaveAndPublish} className="btn btn-light courses-home-module-button float-end">
                   Save & Publish
                 </button>
                 <Link to={`/Kanbas/Courses/${courseId}/Quizzes`} className="btn btn-light courses-home-module-button float-end">
