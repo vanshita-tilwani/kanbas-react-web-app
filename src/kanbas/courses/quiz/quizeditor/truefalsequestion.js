@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import "./quizquestionseditor.css";
 
 const TrueFalseQuestion = ({trueFalseQuestion}) => {
+  // eslint-disable-next-line
   const [question, setQuestion] = useState('');
+  // eslint-disable-next-line
   const [correctAnswer, setCorrectAnswer] = useState(null);
 
   const handleQuestionChange = (e) => {

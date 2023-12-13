@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "./quizquestionseditor"
 import { FaPlus} from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
-import * as client from "../client";
-import { useParams } from "react-router-dom";
 
 const MultipleChoiceQuestion = ({mcqQuestion}) => {
-  const { quizId } = useParams();
-  const dispatch = useDispatch();
+  // eslint-disable-next-line
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState(['', '', '', '']);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
-
-  
-
-  const questions = useSelector((state) => state.quizReducer.questions);
-  const activeQuestion = useSelector((state) => state.quizReducer.question);
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value);
@@ -69,10 +60,10 @@ const MultipleChoiceQuestion = ({mcqQuestion}) => {
               <input
               type="radio"
               name="correctAnswer"
-              checked={mcqQuestion.correctAnswers.indexOf(answer) != -1}
+              checked={mcqQuestion.correctAnswers.indexOf(answer) !== -1}
               onChange={() => handleSelectCorrectAnswer(index)}
               />
-              <label className='padding' style={{color : (mcqQuestion.correctAnswers.indexOf(answer) != -1 ? "green" : "black")}}>{mcqQuestion.correctAnswers.indexOf(answer) != -1 ? "Correct Answer" : "Possible Answer"}</label>
+              <label className='padding' style={{color : (mcqQuestion.correctAnswers.indexOf(answer) !== -1 ? "green" : "black")}}>{mcqQuestion.correctAnswers.indexOf(answer) !== -1 ? "Correct Answer" : "Possible Answer"}</label>
             </div>
             <div className='col-9' style={{display: "flex"}}>
               <input

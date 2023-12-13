@@ -3,6 +3,7 @@ import "./quizquestionseditor"
 import { FaPlus} from "react-icons/fa";
 
 const FillInTheBlank = ({fillIntheBlankQuestion}) => {
+  // eslint-disable-next-line
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState(['', '', '', '']);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
