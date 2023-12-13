@@ -25,7 +25,22 @@ function QuizList() {
   }, [courseId]);
 
   const handleAddQuiz = () => {
-    navigate(`/Kanbas/Courses/${courseId}/Quizzes/Edit/${Date.now()}`)
+    var newQuiz= { 
+          
+          name: "New Quiz", 
+          description: "New Quiz Description",
+          course: courseId,
+          published : false,
+          points: 0,
+          shuffleAnswers: false,
+          timeLimit: 0,
+          multipleAttempts:false,
+          dueDate: moment().utc().format('YYYY-MM-DD'),
+          availableFrom: moment().utc().format('YYYY-MM-DD'),
+          availableUntil: moment().utc().format('YYYY-MM-DD'),
+    }
+    dispatch(setQuiz(newQuiz));
+    navigate(`/Kanbas/Courses/${courseId}/Quizzes/Edit/${-1}`)
   };
 
   const handleDeleteQuiz = (quizId) => {

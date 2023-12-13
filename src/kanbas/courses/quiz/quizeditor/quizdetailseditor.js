@@ -47,8 +47,10 @@ function QuizDetailsEditor() {
     const exisitingQuiz = quizzes.find((quiz) => quiz._id === quizId);
     if (exisitingQuiz) {
       await service.updateQuiz({...quiz, published : true});
+      dispatch(updateQuiz({...quiz, published : true}));
     } else {
       await service.createQuiz(courseId, {...quiz, published : true})
+      dispatch(addQuiz({...quiz, published : true}));
     }
     navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
   }

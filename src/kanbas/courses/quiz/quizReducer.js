@@ -3,7 +3,7 @@ import moment from "moment";
 
 const initialState = {
   quizzes: [],
-  quiz: { title: "New Quiz 123", 
+  quiz: { name: "New Quiz", 
           description: "New Quiz Description",
           course: "",
           published : false,
