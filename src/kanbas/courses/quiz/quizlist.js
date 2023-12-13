@@ -5,13 +5,13 @@ import { FaPlus, FaCheckCircle, FaCaretDown} from "react-icons/fa";
 import { FaRocket } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  addQuiz,
   deleteQuiz,
   setQuiz,
   setQuizzes,
 } from "./quizReducer";
 import * as client from "./client";
 import ThreeDotsMenu from "./ThreeDotsMenu";
+import moment from "moment/moment";
 
 function QuizList() {
   const { courseId } = useParams();
@@ -25,9 +25,7 @@ function QuizList() {
   }, [courseId]);
 
   const handleAddQuiz = () => {
-    client.createQuiz(courseId, quiz).then((quiz) => {
-      dispatch(addQuiz(quiz));
-    });
+    navigate(`/Kanbas/Courses/${courseId}/Quizzes/Edit/${Date.now()}`)
   };
 
   const handleDeleteQuiz = (quizId) => {
@@ -36,12 +34,27 @@ function QuizList() {
     });
   };
 
-  const handleQuizEdit = (quizId) => {
+  const handlePublishOrUnpublishQuiz = (quiz, publish) => {
+    var updatedQuiz = {...quiz, published : publish};
+    try{
+      client.updateQuiz(updatedQuiz).then((status) => {
+        var updatedQuizzes = quizzes.filter(q => q._id !== quiz._id);
+        updatedQuizzes.push(updatedQuiz);
+        dispatch(setQuizzes(updatedQuizzes));
+      })
+      
+    }
+    catch(e) {
+
+    }
+  }
+
+  const handleQuizEdit = (quiz, quizId) => {
+    dispatch(setQuiz(quiz))
     navigate(`/Kanbas/Courses/${courseId}/Quizzes/Edit/${quizId}`)
   }
 
   const quizzes = useSelector((state) => state.quizReducer.quizzes);
-  const quiz = useSelector((state) => state.quizReducer.quiz);
   const dispatch = useDispatch();
   return (
     <div className="assignment">
@@ -85,7 +98,7 @@ function QuizList() {
                   </div>
                   <div>
                     <span style={{ color: "red" }}>Multiple Modules </span>
-                    | Due {quiz.dueDate} at 11:59 PM | 100 pts
+                    | Due {moment(quiz.dueDate.toString()).utc().format('YYYY-MM-DD')} at 11:59 PM | {quiz.points} pts
                   </div>
                 </div>
               </div>
@@ -95,7 +108,10 @@ function QuizList() {
                 
                 <ThreeDotsMenu 
                   onDelete = {() => {handleDeleteQuiz(quiz._id)}}
-                  onEdit = {() => {handleQuizEdit(quiz._id)}}/>
+                  onEdit = {() => {handleQuizEdit(quiz, quiz._id)}}
+                  isPublished = {quiz.published}
+                  onPublish = {() => {handlePublishOrUnpublishQuiz(quiz, true)}}
+                  onUnpublish = {() => {handlePublishOrUnpublishQuiz(quiz, false)}}/>
               </div>
             </li>
           ))}

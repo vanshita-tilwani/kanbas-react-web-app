@@ -6,6 +6,7 @@ import { FaPlus, FaSearch} from "react-icons/fa";
 import "./quizquestionseditor.css";
 import MultipleChoiceQuestion from "./multiplechoicequestion";
 import TrueFalseQuestion from "./truefalsequestion";
+import FillInTheBlank from "./fillintheblankquestion";
 
 function QuizQuestionEditor() {
   
@@ -19,7 +20,7 @@ function QuizQuestionEditor() {
         case 'truefalse':
           return <TrueFalseQuestion/>;
         case 'fillintheblank':
-          return <h1>Bye</h1>;;
+          return <FillInTheBlank/>;
         default:
           return <MultipleChoiceQuestion/>;
       }

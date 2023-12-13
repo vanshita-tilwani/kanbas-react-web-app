@@ -1,8 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+import moment from "moment";
 
 const initialState = {
   quizzes: [],
-  quiz: { title: "New Quiz 123", description: "New Quiz Description" },
+  quiz: { title: "New Quiz 123", 
+          description: "New Quiz Description",
+          course: "",
+          published : false,
+          points: 0,
+          shuffleAnswers: false,
+          timeLimit: 0,
+          multipleAttempts:false,
+          dueDate: moment().utc().format('YYYY-MM-DD'),
+          availableFrom: moment().utc().format('YYYY-MM-DD'),
+          availableUntil: moment().utc().format('YYYY-MM-DD'),
+        },
 };
 
 
