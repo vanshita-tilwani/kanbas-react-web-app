@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./multiplechoicequestion.css"
+import "./quizquestionseditor"
 import { FaPlus} from "react-icons/fa";
 
 const MultipleChoiceQuestion = () => {

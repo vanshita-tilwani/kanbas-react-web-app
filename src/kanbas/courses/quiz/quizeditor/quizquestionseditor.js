@@ -5,44 +5,58 @@ import { Link } from "react-router-dom";
 import { FaPlus, FaSearch} from "react-icons/fa";
 import "./quizquestionseditor.css";
 import MultipleChoiceQuestion from "./multiplechoicequestion";
+import TrueFalseQuestion from "./truefalsequestion";
 
 function QuizQuestionEditor() {
   
-    const [renderExtraComponents, setRenderExtraComponents] = useState(false);
-    const [selectedComponent, setSelectedComponent] = useState(null);
+    
+    const [dynamicComponents, setDynamicComponents] = useState([]);
 
-    const renderSelectedComponent = () => {
+    const renderSelectedComponent = (selectedComponent) => {
       switch (selectedComponent) {
         case 'mcq':
           return <MultipleChoiceQuestion/>;
         case 'truefalse':
-          return <h1>Hii</h1>;
+          return <TrueFalseQuestion/>;
         case 'fillintheblank':
           return <h1>Bye</h1>;;
         default:
           return <MultipleChoiceQuestion/>;
       }
     };
+
     const handleDropdownChange = (event) => {
       // Set the selected component based on the dropdown value
-      setSelectedComponent(event.target.value);
+      setDynamicComponents([...dynamicComponents, ])
+      let items = [...dynamicComponents];
+      items[event.target.id] = renderSelectedComponent(event.target.value);
+      
+      setDynamicComponents([...items]);
+
+      //setSelectedComponent(event.target.value);
     };
+
     const handleButtonClick = () => {
-      // Toggle the state to show/hide extra components
-      setRenderExtraComponents(!renderExtraComponents);
+      // Create a new component (you can customize this part)  
+      // Update the state to add the new component to the list
+      setDynamicComponents([...dynamicComponents, renderSelectedComponent()]);
     };
+  
     const { courseId } = useParams();
 
     return (
     <div className="quiz-details-editor">
       <div>
-        {renderExtraComponents && (<div>
-          <div className='question-editor'>
+      {dynamicComponents.map((component, index) => (
+        // Make sure to assign a unique key to each component
+        // The key is important for React to efficiently update the list
+        <div className='question-editor'>
+        <div>
             <div className='padding header'>
               <input type="text" className="half-width form-control col-3" placeholder='Question' 
               onChange={(e) => {}}
               />
-              <select className='half-width form-control col-6' defaultValue="mcq"
+              <select id={index} className='half-width form-control col-6' defaultValue="mcq"
               onChange={handleDropdownChange}>
               <option value="mcq">Multiple Choice Question</option>
               <option value="truefalse">True/False</option>
@@ -50,9 +64,13 @@ function QuizQuestionEditor() {
               </select>
 
             </div>
-            {renderSelectedComponent()}
+            
           </div>
-        </div>)}
+          <div key={index}>{component}</div>
+        </div>
+        
+      ))}
+        
         <div className="container">
           <div className="p-2" style={{display : "flex"}}>
             <button onClick={handleButtonClick} className="btn btn-light col-3 float-end quiz-question-button save-button">
