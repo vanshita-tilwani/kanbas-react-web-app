@@ -1,5 +1,5 @@
 import React,{ useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./quizlist.css";
 import { FaPlus, FaCheckCircle, FaCaretDown} from "react-icons/fa";
 import { FaRocket } from "react-icons/fa";
@@ -15,6 +15,7 @@ import ThreeDotsMenu from "./ThreeDotsMenu";
 
 function QuizList() {
   const { courseId } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     client.findQuizForCourse(courseId)
       .then((quizzes) =>
@@ -34,6 +35,10 @@ function QuizList() {
       dispatch(deleteQuiz(quizId));
     });
   };
+
+  const handleQuizEdit = (quizId) => {
+    navigate(`/Kanbas/Courses/${courseId}/Quizzes/Edit/${quizId}`)
+  }
 
   const quizzes = useSelector((state) => state.quizReducer.quizzes);
   const quiz = useSelector((state) => state.quizReducer.quiz);
@@ -66,7 +71,7 @@ function QuizList() {
           {quizzes
       .filter((quiz) => quiz.course === courseId)
       .map((quiz)  => (
-            <li className="list-group-item assignment-list-item assignment-list-item-green-border">
+            <li key={"item_" + quiz._id} className="list-group-item assignment-list-item assignment-list-item-green-border">
               <div className="d-flex flex-row align-items-center">
                 <FaRocket style={{color : "green"}} className="icon-margin" />
                 <div>
@@ -88,7 +93,9 @@ function QuizList() {
                 
                 <FaCheckCircle style={{ color: "green" , opacity: (quiz.published ? "1" : "0.3")}} className="icon-margin" />
                 
-                <ThreeDotsMenu onDelete = {() => {handleDeleteQuiz(quiz._id)} }/>
+                <ThreeDotsMenu 
+                  onDelete = {() => {handleDeleteQuiz(quiz._id)}}
+                  onEdit = {() => {handleQuizEdit(quiz._id)}}/>
               </div>
             </li>
           ))}

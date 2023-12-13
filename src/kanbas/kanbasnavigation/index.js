@@ -15,7 +15,6 @@ function KanbasNavigation() {
     }
 
     const { pathname } = useLocation();
-    console.log(pathname);
     return (
         <div className="kanbas-navigation-side-bar">
             <div>

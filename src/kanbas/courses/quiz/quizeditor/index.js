@@ -2,6 +2,7 @@ import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import QuizDetailsEditor from "./quizdetailseditor";
+import QuizQuestionEditor from "./quizquestionseditor";
 
 function QuizEditor() {
 
@@ -15,7 +16,7 @@ function QuizEditor() {
         <QuizDetailsEditor/>
       </TabPanel>
       <TabPanel>
-        <h1>Hiii</h1>
+        <QuizQuestionEditor/>
       </TabPanel>
     </Tabs>
   );

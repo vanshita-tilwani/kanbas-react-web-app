@@ -6,10 +6,9 @@
   align-items: center;
 }
 
-table {
-  border: 2px solid black;
-  width: 800px;
-  height: 200px;
+.details-table .table {
+  border: 2px solid grey;
+  height: 137px;
 }
 
 th {

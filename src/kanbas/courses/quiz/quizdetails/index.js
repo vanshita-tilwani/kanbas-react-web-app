@@ -110,20 +110,23 @@ function QuizDetails() {
           </div>
           <div className="details-table">
           <table className="table table-striped table-bordered">
-        <tr>
-            <th>Due</th>
-            <th>For</th>
-            <th>Available from</th>
-            <th>Until</th>
-        </tr>
-        <tr>
-            <td>{moment(exisitingQuiz.dueDate.toString()).utc().format('DD MMM, YYYY hh:mm A')}</td>
-            <td>Everyone</td>
-            <td>{moment(exisitingQuiz.availableFrom.toString()).utc().format('DD MMM, YYYY hh:mm A')}</td>
-            <td>{moment(exisitingQuiz.availableUntil.toString()).utc().format('DD MMM, YYYY hh:mm A')}</td>
-        </tr>
-        
-    </table>
+            <thead>
+              <tr>
+                <th>Due</th>
+                <th>For</th>
+                <th>Available from</th>
+                <th>Until</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{moment(exisitingQuiz.dueDate.toString()).utc().format('DD MMM, YYYY hh:mm A')}</td>
+                <td>Everyone</td>
+                <td>{moment(exisitingQuiz.availableFrom.toString()).utc().format('DD MMM, YYYY hh:mm A')}</td>
+                <td>{moment(exisitingQuiz.availableUntil.toString()).utc().format('DD MMM, YYYY hh:mm A')}</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
           <div style={{display : "flex", justifyContent : "center"}}>
           <button className="btn btn-danger assignment-button">Preview

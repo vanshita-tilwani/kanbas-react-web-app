@@ -55,20 +55,20 @@ function AssignmentEditor() {
         <form>
           <div className="continer">
             <div className="row p-2">
-              <label for="assignment-name-text-field" className="col-12 assignment-title">Assignment Name</label>
+              <label htmlFor="assignment-name-text-field" className="col-12 assignment-title">Assignment Name</label>
               <input id="assignment-name-text-field" type="text" value={assignment.title} className="form-control col-12"  onChange={(e) => dispatch(setAssignment({ ...assignment, title: e.target.value }))} />
             </div>
             <div className="row p-2">
               <input id="assignment-description-text-field" placeholder="Description" value={assignment.description} className="form-control col-12" onChange={(e) => dispatch(setAssignment({ ...assignment, description: e.target.value }))} />
             </div>
             <div className="row p-2">
-              <label for="points-text-field"
+              <label htmlFor="points-text-field"
                 className="col-3 assignment-edit-content-title align-self-center">Points</label>
               <input id="points-text-field" type="number"
                 className="form-control col-6 assignment-edit-content-form" value="100" />
             </div>
             <div className="row p-2">
-              <label for="assignment-group-text-field"
+              <label htmlFor="assignment-group-text-field"
                 className="col-3 assignment-edit-content-title align-self-center">Assignment Group</label>
               <select id="assignment-group-text-field"
                 className="form-select assignment-edit-content-form">
@@ -76,7 +76,7 @@ function AssignmentEditor() {
               </select>
             </div>
             <div className="row p-2">
-              <label for="assignment-grade-display-text-field"
+              <label htmlFor="assignment-grade-display-text-field"
                 className="col-3 assignment-edit-content-title align-self-center">Display Grade as</label>
               <select id="assignment-grade-display-text-field"
                 className="form-select assignment-edit-content-form">
@@ -87,7 +87,7 @@ function AssignmentEditor() {
               <label className="col-3 assignment-edit-content-title"></label>
               <div className="assignment-edit-content-form">
                 <input type="checkbox" id="grade-to-final" className="checkbox-margin-right" />
-                <label for="grade-to-final">Do not count this assignment towards the final
+                <label htmlFor="grade-to-final">Do not count this assignment towards the final
                   grade</label>
               </div>
             </div>
@@ -103,23 +103,23 @@ function AssignmentEditor() {
                   <div className="assignment-edit-online-entry-text">Online Entry Option</div>
                   <div>
                     <input type="checkbox" checked id="text-entry" className="checkbox-margin-right"/>
-                    <label for="text-entry">Text Entry</label>
+                    <label htmlFor="text-entry">Text Entry</label>
                   </div>
                   <div>
                     <input type="checkbox" checked id="website-entry" className="checkbox-margin-right"/>
-                    <label for="website-entry">Website URL</label>
+                    <label htmlFor="website-entry">Website URL</label>
                   </div>
                   <div>
                     <input type="checkbox" checked id="media-entry" className="checkbox-margin-right"/>
-                    <label for="media-entry">Media Recordings</label>
+                    <label htmlFor="media-entry">Media Recordings</label>
                   </div>
                   <div>
                     <input type="checkbox" id="student-annotation-entry" className="checkbox-margin-right"/>
-                    <label for="student-annotation-entry">Student Annotation</label>
+                    <label htmlFor="student-annotation-entry">Student Annotation</label>
                   </div>
                   <div>
                     <input type="checkbox" id="file-entry" className="checkbox-margin-right"/>
-                    <label for="file-entry">File Uploads</label>
+                    <label htmlFor="file-entry">File Uploads</label>
                   </div>
                 </div>
               </div>
@@ -164,7 +164,7 @@ function AssignmentEditor() {
             <div className="row">
               <div className="col-6 align-self-center">
                 <input type="checkbox" id="notify-user-content-changed" className="checkbox-margin-right" />
-                <label for="notify-user-content-changed">Notify users that this content has
+                <label htmlFor="notify-user-content-changed">Notify users that this content has
                   changed</label>
               </div>
               <div className="col-6 align-self-center">

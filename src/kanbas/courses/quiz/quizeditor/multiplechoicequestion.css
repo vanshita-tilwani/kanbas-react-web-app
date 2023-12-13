@@ -1,0 +1,42 @@
+.half-width {
+  width: 250px !important;
+}
+
+.padding {
+  padding: 8px 20px;
+}
+
+.header {
+border-bottom: 1px solid #aaa;
+display: flex;
+}
+
+.footer {
+  
+  display: flex;
+}
+
+.xsmall-font {
+  font-size: 1em;
+  font-family: "Lato"
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.question-editor  {
+  border: 1px solid #aaa;
+  background-color: #fff;
+  border-radius: 3px;
+  margin: 0.7em auto 30px
+}
+
+.question-editor .form_answers .row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-editor  .form_answers .btn-danger {
+  float: right;
+}

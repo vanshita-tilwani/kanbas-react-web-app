@@ -12,8 +12,8 @@ function CourseNavigation() {
                 {links.map((link, index) => (
                     <Link
                         key={index}
-                        to={`/Kanbas/Courses/${courseId}/${link.toLowerCase()}`}
-                        className={`list-group-item ${pathname.includes(link.toLowerCase()) && "active"}`}>
+                        to={`/Kanbas/Courses/${courseId}/${link}`}
+                        className={`list-group-item ${pathname.includes(link) && "active"}`}>
                         {link}
                     </Link>
                 ))}

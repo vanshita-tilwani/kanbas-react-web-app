@@ -77,17 +77,17 @@ function QuizDetailsEditor() {
             <div className="row p-2">
               <label
                 className="col-3 quiz-details-edit-content-title align-self-center">Quiz Type</label>
-              <select
-                className="form-control col-6 quiz-details-edit-content-form" value="100">
-                  <option selected>Graded Quiz</option>
+              <select defaultValue = "Graded Quiz"
+                className="form-control col-6 quiz-details-edit-content-form">
+                  <option >Graded Quiz</option>
                 </select>
             </div>
             <div className="row p-2">
               <label
                 className="col-3 quiz-details-edit-content-title align-self-center">Assignment Group</label>
-              <select
+              <select defaultValue = "Assignments"
                 className="form-control col-6 quiz-details-edit-content-form">
-                <option selected>Assignments</option>
+                <option>Assignments</option>
               </select>
             </div>
             <div className="row p-2">
@@ -107,7 +107,9 @@ function QuizDetailsEditor() {
             <div className="row p-2">
               <label className="col-3 quiz-details-edit-content-title"></label>
               <div className="quiz-details-edit-content-form">
-                <input type="checkbox" checked={true} className="checkbox-margin-right" />
+                <input type="checkbox" checked={true} className="checkbox-margin-right" 
+                  onChange={(e) => dispatch(setQuiz({ ...quiz, timeLimit: 0 }))}
+                />
                 <label>Time Limit</label>
                 <input type="number"value={quiz.timeLimit} style={{width : "50px"}} 
                   onChange={(e) => dispatch(setQuiz({ ...quiz, timeLimit: e.target.valueAsNumber }))}
@@ -165,7 +167,7 @@ function QuizDetailsEditor() {
             <div className="row">
               <div className="col-6 align-self-center">
                 <input type="checkbox" id="notify-user-content-changed" className="checkbox-margin-right" />
-                <label for="notify-user-content-changed">Notify users this quiz has
+                <label htmlFor="notify-user-content-changed">Notify users this quiz has
                   changed</label>
               </div>
               <div className="col-6 align-self-center">

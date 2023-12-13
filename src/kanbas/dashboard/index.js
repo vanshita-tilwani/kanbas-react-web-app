@@ -84,7 +84,7 @@ function Dashboard({ courses, course, setCourse, addNewCourse,
                 <div className="dashboard-card-box">
                     <div className="d-flex flex-row flex-wrap">
                         {courses.map((course) => (
-                            <div className="dashboard-course-card">
+                            <div className="dashboard-course-card" key={"card" + course.number}>
                                 
                                 <div className="dashboard-course-card-description">
                                     <Link key={course.number} to={`/Kanbas/Courses/${course.number}`} >
