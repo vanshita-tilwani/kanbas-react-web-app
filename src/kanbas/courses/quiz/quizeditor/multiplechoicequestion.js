@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import "./quizquestionseditor"
 import { FaPlus} from "react-icons/fa";
 
-const MultipleChoiceQuestion = ({mcqQuestion}) => {
+const MultipleChoiceQuestion = ({quizQuestion}) => {
   // eslint-disable-next-line
-  const [question, setQuestion] = useState('');
-  const [answers, setAnswers] = useState(['', '', '', '']);
-  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
+  var correctAnswer = quizQuestion.correctAnswers == null ? "" : quizQuestion.correctAnswers[0];
+  const [question, setQuestion] = useState(quizQuestion);
+  const [answers, setAnswers] = useState(quizQuestion.possibleAnswers);
+  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(quizQuestion.possibleAnswers.indexOf(correctAnswer));
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value);
@@ -47,23 +48,23 @@ const MultipleChoiceQuestion = ({mcqQuestion}) => {
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Question : </label>
-          <textarea className='form-control col-12' type="textarea" value={mcqQuestion.questionText} onChange={handleQuestionChange} />
+          <textarea className='form-control col-12' type="textarea" value={question?.questionText} onChange={handleQuestionChange} />
 
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Answers : </label>
         </div>
         <div className='form_answers padding'>
-        {mcqQuestion.possibleAnswers.map((answer, index) => (
+        {answers.map((answer, index) => (
           <div className='padding header' key={index}>
             <div className='half-width col-3'>
               <input
               type="radio"
               name="correctAnswer"
-              checked={mcqQuestion.correctAnswers.indexOf(answer) !== -1}
+              checked={correctAnswerIndex === index}
               onChange={() => handleSelectCorrectAnswer(index)}
               />
-              <label className='padding' style={{color : (mcqQuestion.correctAnswers.indexOf(answer) !== -1 ? "green" : "black")}}>{mcqQuestion.correctAnswers.indexOf(answer) !== -1 ? "Correct Answer" : "Possible Answer"}</label>
+              <label className='padding' style={{color : (correctAnswerIndex === index ? "green" : "black")}}>{correctAnswerIndex === index ? "Correct Answer" : "Possible Answer"}</label>
             </div>
             <div className='col-9' style={{display: "flex"}}>
               <input

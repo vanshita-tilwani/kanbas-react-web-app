@@ -20,13 +20,13 @@ function QuizQuestionEditor() {
     const renderSelectedComponent = (selectedComponent,question) => {
       switch (selectedComponent) {
         case 'mcq':
-          return <MultipleChoiceQuestion mcqQuestion = {question}/>;
+          return <MultipleChoiceQuestion quizQuestion = {question}/>;
         case 'truefalse':
-          return <TrueFalseQuestion trueFalseQuestion= {question}/>;
+          return <TrueFalseQuestion quizQuestion= {question}/>;
         case 'fillintheblank':
-          return <FillInTheBlank fillIntheBlankQuestion = {question}/>;
+          return <FillInTheBlank quizQuestion = {question}/>;
         default:
-          return <MultipleChoiceQuestion/>;
+          return <MultipleChoiceQuestion quizQuestion = {{possibleAnswers : ['','',''], correctAnswers : []}}/>;
       }
     };
 
@@ -34,7 +34,7 @@ function QuizQuestionEditor() {
       // Set the selected component based on the dropdown value
       setDynamicComponents([...dynamicComponents, ])
       let items = [...dynamicComponents];
-      items[event.target.id] = renderSelectedComponent(event.target.value);
+      items[event.target.id] = renderSelectedComponent(event.target.value, items[event.target.id].props.quizQuestion);
       
       setDynamicComponents([...items]);
 
@@ -60,29 +60,7 @@ function QuizQuestionEditor() {
     return (
     <div className="quiz-details-editor">
       <div>
-      {dynamicComponents.map((component, index) => (
-        // Make sure to assign a unique key to each component
-        // The key is important for React to efficiently update the list
-        <div className='question-editor'>
-        <div>
-            <div className='padding header'>
-              <input type="text" className="half-width form-control col-3" placeholder='Question' 
-              onChange={(e) => {}}
-              />
-              <select id={index} className='half-width form-control col-6' defaultValue="mcq"
-              onChange={handleDropdownChange}>
-              <option value="mcq">Multiple Choice Question</option>
-              <option value="truefalse">True/False</option>
-              <option value="fillintheblank">Fill in the Blank</option>
-              </select>
-
-            </div>
-            
-          </div>
-          <div key={index}>{component}</div>
-        </div>
-        
-      ))}
+      
       {questions.map((question, index) => (
         // Make sure to assign a unique key to each component
         // The key is important for React to efficiently update the list
@@ -103,6 +81,29 @@ function QuizQuestionEditor() {
             
           </div>
           <div key={index}>{renderSelectedComponent(question.questionType, question)}</div>
+        </div>
+        
+      ))}
+      {dynamicComponents.map((component, index) => (
+        // Make sure to assign a unique key to each component
+        // The key is important for React to efficiently update the list
+        <div className='question-editor'>
+        <div>
+            <div className='padding header'>
+              <input type="text" className="half-width form-control col-3" placeholder='Question' 
+              onChange={(e) => {}}
+              />
+              <select id={index} className='half-width form-control col-6' defaultValue="mcq"
+              onChange={handleDropdownChange}>
+              <option value="mcq">Multiple Choice Question</option>
+              <option value="truefalse">True/False</option>
+              <option value="fillintheblank">Fill in the Blank</option>
+              </select>
+
+            </div>
+            
+          </div>
+          <div key={index}>{component}</div>
         </div>
         
       ))}

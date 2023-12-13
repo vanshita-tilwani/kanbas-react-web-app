@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import "./quizquestionseditor.css";
 
-const TrueFalseQuestion = ({trueFalseQuestion}) => {
+const TrueFalseQuestion = ({quizQuestion}) => {
   // eslint-disable-next-line
-  const [question, setQuestion] = useState('');
+  const [question, setQuestion] = useState(quizQuestion);
   // eslint-disable-next-line
-  const [correctAnswer, setCorrectAnswer] = useState(null);
+  const [correctAnswer, setCorrectAnswer] = useState(quizQuestion.correctAnswers[0]);
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value);
@@ -23,7 +23,7 @@ const TrueFalseQuestion = ({trueFalseQuestion}) => {
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Question : </label>
-          <textarea className='form-control col-12' type="textarea" value={trueFalseQuestion.questionText} onChange={handleQuestionChange} />
+          <textarea className='form-control col-12' type="textarea" value={question.questionText} onChange={handleQuestionChange} />
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Answers : </label>
@@ -35,20 +35,20 @@ const TrueFalseQuestion = ({trueFalseQuestion}) => {
             type="radio"
             name="correctAnswer"
             value="true"
-            checked={trueFalseQuestion.correctAnswers.includes("true")}
+            checked={correctAnswer}
             onChange={() => handleSelectCorrectAnswer(true)}
           />
-            <label className='padding' style={{color : (trueFalseQuestion.correctAnswers.includes("true") ? "green" : "black")}}>True</label>
+            <label className='padding' style={{color : (correctAnswer ? "green" : "black")}}>True</label>
           </div>
           <div className='half-width col-3'>
             <input
             type="radio"
             name="correctAnswer"
             value="false"
-            checked={trueFalseQuestion.correctAnswers.includes("false")}
+            checked={correctAnswer}
             onChange={() => handleSelectCorrectAnswer(false)}
             />
-            <label className='padding' style={{color : (trueFalseQuestion.correctAnswers.includes("false") ? "green" : "black")}}>False</label>
+            <label className='padding' style={{color : (correctAnswer ? "green" : "black")}}>False</label>
           </div>
         </div>
         </div>

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import "./quizquestionseditor"
 import { FaPlus} from "react-icons/fa";
 
-const FillInTheBlank = ({fillIntheBlankQuestion}) => {
+const FillInTheBlank = ({quizQuestion}) => {
   // eslint-disable-next-line
-  const [question, setQuestion] = useState('');
-  const [answers, setAnswers] = useState(['', '', '', '']);
+  const [question, setQuestion] = useState(quizQuestion);
+  const [answers, setAnswers] = useState(quizQuestion.correctAnswers);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
 
   const handleQuestionChange = (e) => {
@@ -42,14 +42,14 @@ const FillInTheBlank = ({fillIntheBlankQuestion}) => {
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Question : </label>
-          <textarea className='form-control col-12' type="textarea" value={fillIntheBlankQuestion.questionText} onChange={handleQuestionChange} />
+          <textarea className='form-control col-12' type="textarea" value={question.questionText} onChange={handleQuestionChange} />
 
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Answers : </label>
         </div>
         <div className='form_answers padding'>
-        {fillIntheBlankQuestion.correctAnswers.map((answer, index) => (
+        {answers.map((answer, index) => (
           <div className='padding header' key={index}>
             <div className='half-width col-3'>
               <label className='padding' style={{color : "green"}}>Possible Answer</label>
