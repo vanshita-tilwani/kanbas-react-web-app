@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./quizquestionseditor"
 import { FaPlus} from "react-icons/fa";
 
-const FillInTheBlank = () => {
+const FillInTheBlank = ({fillIntheBlankQuestion}) => {
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState(['', '', '', '']);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
@@ -41,14 +41,14 @@ const FillInTheBlank = () => {
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Question : </label>
-          <textarea className='form-control col-12' type="textarea" value={question} onChange={handleQuestionChange} />
+          <textarea className='form-control col-12' type="textarea" value={fillIntheBlankQuestion.questionText} onChange={handleQuestionChange} />
 
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Answers : </label>
         </div>
         <div className='form_answers padding'>
-        {answers.map((answer, index) => (
+        {fillIntheBlankQuestion.correctAnswers.map((answer, index) => (
           <div className='padding header' key={index}>
             <div className='half-width col-3'>
               <label className='padding' style={{color : "green"}}>Possible Answer</label>

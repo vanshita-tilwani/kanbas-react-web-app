@@ -1,11 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaCheckCircle, FaRegTimesCircle} from "react-icons/fa";
 import {FaEllipsisVertical,FaX} from "react-icons/fa6";
 import "./quizdetailseditor.css";
 import { useSelector, useDispatch } from "react-redux";
-
 import {
   addQuiz,
   updateQuiz,

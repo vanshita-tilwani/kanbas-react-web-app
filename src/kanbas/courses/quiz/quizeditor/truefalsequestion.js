@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./quizquestionseditor.css";
 
-const TrueFalseQuestion = () => {
+const TrueFalseQuestion = ({trueFalseQuestion}) => {
   const [question, setQuestion] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState(null);
 
@@ -21,7 +21,7 @@ const TrueFalseQuestion = () => {
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Question : </label>
-          <textarea className='form-control col-12' type="textarea" value={question} onChange={handleQuestionChange} />
+          <textarea className='form-control col-12' type="textarea" value={trueFalseQuestion.questionText} onChange={handleQuestionChange} />
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Answers : </label>
@@ -33,18 +33,20 @@ const TrueFalseQuestion = () => {
             type="radio"
             name="correctAnswer"
             value="true"
+            checked={trueFalseQuestion.correctAnswers.includes("true")}
             onChange={() => handleSelectCorrectAnswer(true)}
           />
-            <label className='padding' style={{color : (correctAnswer ? "green" : "black")}}>True</label>
+            <label className='padding' style={{color : (trueFalseQuestion.correctAnswers.includes("true") ? "green" : "black")}}>True</label>
           </div>
           <div className='half-width col-3'>
             <input
             type="radio"
             name="correctAnswer"
             value="false"
+            checked={trueFalseQuestion.correctAnswers.includes("false")}
             onChange={() => handleSelectCorrectAnswer(false)}
             />
-            <label className='padding' style={{color : (!correctAnswer ? "green" : "black")}}>False</label>
+            <label className='padding' style={{color : (trueFalseQuestion.correctAnswers.includes("false") ? "green" : "black")}}>False</label>
           </div>
         </div>
         </div>

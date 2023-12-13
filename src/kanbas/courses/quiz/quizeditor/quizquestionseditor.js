@@ -1,26 +1,30 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { useParams } from "react-router-dom";
-
+import * as client from "../client";
 import { Link } from "react-router-dom";
 import { FaPlus, FaSearch} from "react-icons/fa";
 import "./quizquestionseditor.css";
 import MultipleChoiceQuestion from "./multiplechoicequestion";
 import TrueFalseQuestion from "./truefalsequestion";
 import FillInTheBlank from "./fillintheblankquestion";
+import { useSelector, useDispatch } from "react-redux";
+import { setQuestions } from '../quizReducer';
 
 function QuizQuestionEditor() {
-  
+    const { courseId } = useParams();
+    const { quizId } = useParams();
+    const dispatch = useDispatch();
     
     const [dynamicComponents, setDynamicComponents] = useState([]);
 
-    const renderSelectedComponent = (selectedComponent) => {
+    const renderSelectedComponent = (selectedComponent,question) => {
       switch (selectedComponent) {
         case 'mcq':
-          return <MultipleChoiceQuestion/>;
+          return <MultipleChoiceQuestion mcqQuestion = {question}/>;
         case 'truefalse':
-          return <TrueFalseQuestion/>;
+          return <TrueFalseQuestion trueFalseQuestion= {question}/>;
         case 'fillintheblank':
-          return <FillInTheBlank/>;
+          return <FillInTheBlank fillIntheBlankQuestion = {question}/>;
         default:
           return <MultipleChoiceQuestion/>;
       }
@@ -43,8 +47,16 @@ function QuizQuestionEditor() {
       setDynamicComponents([...dynamicComponents, renderSelectedComponent()]);
     };
   
-    const { courseId } = useParams();
+    useEffect(() => {
+      client.findQuestionsForQuiz(quizId)
+        .then((questions) =>
+          dispatch(setQuestions(questions))
+      );
+      // eslint-disable-next-line 
+    }, [quizId]);
 
+    
+    const questions = useSelector((state) => state.quizReducer.questions);
     return (
     <div className="quiz-details-editor">
       <div>
@@ -68,6 +80,29 @@ function QuizQuestionEditor() {
             
           </div>
           <div key={index}>{component}</div>
+        </div>
+        
+      ))}
+      {questions.map((question, index) => (
+        // Make sure to assign a unique key to each component
+        // The key is important for React to efficiently update the list
+        <div className='question-editor'>
+        <div>
+            <div className='padding header'>
+              <input value={question.title} type="text" className="half-width form-control col-3" placeholder='Question' 
+              onChange={(e) => {}}
+              />
+              <select id={index} value={question.questionType} className='half-width form-control col-6' defaultValue="mcq"
+              onChange={handleDropdownChange}>
+              <option value="mcq">Multiple Choice Question</option>
+              <option value="truefalse">True/False</option>
+              <option value="fillintheblank">Fill in the Blank</option>
+              </select>
+
+            </div>
+            
+          </div>
+          <div key={index}>{renderSelectedComponent(question.questionType, question)}</div>
         </div>
         
       ))}
