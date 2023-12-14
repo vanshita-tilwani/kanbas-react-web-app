@@ -10,7 +10,7 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
   var correctAnswer = quizQuestion.correctAnswers == null ? "" : quizQuestion.correctAnswers[0];
   const [question, setQuestion] = useState(quizQuestion);
   const [answers, setAnswers] = useState(quizQuestion.possibleAnswers);
-  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(quizQuestion.possibleAnswers.indexOf(correctAnswer));
+  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(quizQuestion.possibleAnswers ? quizQuestion.possibleAnswers.indexOf(correctAnswer) : -1);
 
   const questions = useSelector((state) => state.quizReducer.questions);
 
@@ -18,21 +18,37 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
     setQuestion(e.target.value);
   };
 
-  const handleAnswerChange = (e, index) => {
-    const newAnswers = [...answers];
-    newAnswers[index] = e.target.value;
+  const handleAddAnswer = (e) => {
+    const newAnswers = [...answers, e.target.value];
     setAnswers(newAnswers);
+    var updatedQuestions = questions.map(({possibleAnswers, ...question}) => ({
+      ...question,
+      possibleAnswers: question._id === e.target.id ? newAnswers : possibleAnswers
+     
+    }));
+
+    var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
+    dispatch(setQuestions(updatedQuestions));
+    //setQuestion(updatedQuestion);
+    
   };
 
-  const handleAddAnswer = () => {
-    setAnswers([...answers, '']);
-  };
-
-  const handleRemoveAnswer = (index) => {
+  const handleRemoveAnswer = (e, index) => {
+    
     const newAnswers = [...answers];
     newAnswers.splice(index, 1);
     setAnswers(newAnswers);
 
+    var updatedQuestions = questions.map(({possibleAnswers, ...question}) => ({
+      ...question,
+      possibleAnswers: question._id === e.target.id ? newAnswers : possibleAnswers
+     
+    }));
+
+    var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
+    dispatch(setQuestions(updatedQuestions));
+    //setQuestion(updatedQuestion);
+    setAnswers(updatedQuestion.possibleAnswers)
     if (correctAnswerIndex === index) {
       setCorrectAnswerIndex(null);
     } else if (correctAnswerIndex > index) {
@@ -40,40 +56,69 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
     }
   };
 
-  const handleSelectCorrectAnswer = (index) => {
+  const handleSelectCorrectAnswer = (e, index) => {
     setCorrectAnswerIndex(index);
+    var updatedQuestions = questions.map(({correctAnswers, ...question}) => ({
+      ...question,
+      correctAnswers: question._id === e.target.id ? [question.possibleAnswers[index]] : correctAnswers,
+    }));
+    var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
+    dispatch(setQuestions(updatedQuestions));
+    //setQuestion(updatedQuestion);
   };
 
   const handleQuestionTextChange = (e) => {
     
+    var existingQuestions = questions.filter(q => q._id === e.target.id);
+    if(existingQuestions.length === 0){
+      var updatedQuestions = [...questions, {questionText : e.target.value, _id :e.target.id, questionType: "mcq" }]
+    }
+    else {
     //questions.map(question => question._id === e.target.id ? "questionText" :e.target.value);
-    var updatedQuestions = questions.map(({questionText, ...question}) => ({
-      ...question,
-      questionText: question._id === e.target.id ? e.target.value : questionText,
-    }));
+      var updatedQuestions = questions.map(({questionText, ...question}) => ({
+        ...question,
+        questionText: question._id === e.target.id ? e.target.value : questionText,
+      }));
+      
+    }
     var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
     dispatch(setQuestions(updatedQuestions));
-    setQuestion(updatedQuestion);
+    //setQuestion(updatedQuestion);
 
-  }
-  function getUpdatedAnswers(possibleAnswers, index, newValue){
-    return possibleAnswers.map((answer, i) => {
-      return i === index ? newValue : answer
-    })
   }
 
   const handleAnswerTextChange = (e, index) => {
-    var updatedQuestions = questions.map(({possibleAnswers, ...question}) => ({
-      ...question,
-      possibleAnswers: question._id === e.target.id ? getUpdatedAnswers(possibleAnswers, index, e.target.value) : possibleAnswers
+    var existingQuestions = questions.filter(q => q._id === e.target.id);
+    if(existingQuestions.length === 0){
+      var updatedQuestions = [...questions, {possibleAnswers : [e.target.value], _id :e.target.id, questionType: "mcq" }]
+    }
+    else {
+      var updatedQuestions = questions.map(({possibleAnswers, ...question}) => ({
+        ...question,
+        possibleAnswers: question._id === e.target.id ? getUpdatedAnswers(possibleAnswers, index, e.target.value) : possibleAnswers
      
-    }));
-
+      }));
+    }
     var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
     dispatch(setQuestions(updatedQuestions));
-    setQuestion(updatedQuestion);
     setAnswers(updatedQuestion.possibleAnswers)
   }
+
+  function getUpdatedAnswers(possibleAnswers, index, newValue){
+    var updatedStrings;
+    if(possibleAnswers && possibleAnswers[index].length > 0) {
+      updatedStrings = (possibleAnswers || []).map((answer, i) => {
+        return i === index ? newValue : answer
+      })
+    }
+    else{
+      if(possibleAnswers) updatedStrings = [...possibleAnswers, newValue]
+      else updatedStrings = [ newValue];
+    }
+    return updatedStrings.filter(str => str && str.length > 0);
+  }
+
+  
   
   return (
     <div className='mcq-editor'>
@@ -91,14 +136,15 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
           <label className="xsmall-font bold col-3">Answers : </label>
         </div>
         <div className='form_answers padding'>
-        {answers.map((answer, index) => (
+        {(answers || []).map((answer, index) => (
           <div className='padding header' key={index}>
             <div className='half-width col-3'>
               <input
+              id={question._id}
               type="radio"
               name="correctAnswer"
               checked={correctAnswerIndex === index}
-              onChange={() => handleSelectCorrectAnswer(index)}
+              onChange={(e) => handleSelectCorrectAnswer(e, index)}
               />
               <label className='padding' style={{color : (correctAnswerIndex === index ? "green" : "black")}}>{correctAnswerIndex === index ? "Correct Answer" : "Possible Answer"}</label>
             </div>
@@ -110,7 +156,7 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
               value={answer}
               onChange={(e) => handleAnswerTextChange(e, index)}
               />
-              <button className='form-control btn btn-danger padding half-width' style={{ marginLeft: 'auto'}} onClick={() => handleRemoveAnswer(index)}>
+              <button id={question._id} className='form-control btn btn-danger padding half-width' style={{ marginLeft: 'auto'}} onClick={(e) => handleRemoveAnswer(e,index)}>
               Remove
               </button>
             </div>
@@ -118,7 +164,7 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
         
       ))}
         <div className='padding footer'>
-          <button className='form-control padding btn btn-light col-9 half-width' style={{float: "inline-end", color: "#b52828"}} onClick={handleAddAnswer}>
+          <button id={question._id} className='form-control padding btn btn-light col-9 half-width' style={{float: "inline-end", color: "#b52828"}} onClick={(e) => handleAddAnswer(e)}>
           <FaPlus style={{color  : "#b52828"}}/>
             Add Answer
           </button>

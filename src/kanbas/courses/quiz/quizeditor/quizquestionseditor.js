@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState , useEffect, useLayoutEffect} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as client from "../client";
 import { Link } from "react-router-dom";
@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setQuestions } from '../quizReducer';
 
 function QuizQuestionEditor() {
+    setQuestions([]);
     const { courseId } = useParams();
     const { quizId } = useParams();
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function QuizQuestionEditor() {
         case 'fillintheblank':
           return <FillInTheBlank quizQuestion = {question}/>;
         default:
-          return <MultipleChoiceQuestion quizQuestion = {{possibleAnswers : ['','',''], correctAnswers : []}}/>;
+          return <MultipleChoiceQuestion quizQuestion = {{_id : "newquestion" + Date.now(), possibleAnswers : ['','',''], correctAnswers : []}}/>;
       }
     };
 
@@ -49,18 +50,47 @@ function QuizQuestionEditor() {
 
     const handleSave = () => {
       questions.map(async(question) => {
-        if(question._id){
+        if(question._id && !question._id.includes("newquestion")){
           //update /api/quiz/question/:qid
           await client.updateQuestion(question._id, question)
         }
         else {
-
+          
+          await client.addQuestion(quizId, {...question, _id:null})
         }
       });
       navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
     }
   
+    const handleUpdateQuestionTitle = (e) => {
+      var existingQuestions = questions.filter(q => q._id === e.target.id);
+      if(existingQuestions.length === 0){
+        var updatedQuestions = [...questions, {title : e.target.value, _id :e.target.id, questionType: "mcq" }]
+      }
+      else {
+    //questions.map(question => question._id === e.target.id ? "questionText" :e.target.value);
+        var updatedQuestions = questions.map(({title, ...question}) => ({
+        ...question,
+        title: question._id === e.target.id ? e.target.value : title,
+        }));
+      
+      }
+      var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
+      dispatch(setQuestions(updatedQuestions));
+    }
+
     useEffect(() => {
+      setQuestions([]);
+      client.findQuestionsForQuiz(quizId)
+        .then((questions) =>
+          dispatch(setQuestions(questions))
+      );
+      // eslint-disable-next-line 
+    }, []);
+
+
+    useLayoutEffect(() => {
+      setQuestions([]);
       client.findQuestionsForQuiz(quizId)
         .then((questions) =>
           dispatch(setQuestions(questions))
@@ -74,17 +104,17 @@ function QuizQuestionEditor() {
     <div className="quiz-details-editor">
       <div>
       
-      {questions.map((question, index) => (
+      {questions.filter(q => !q._id.includes("newquestion")).map((question, index) => (
         // Make sure to assign a unique key to each component
         // The key is important for React to efficiently update the list
         <div className='question-editor'>
         <div>
             <div className='padding header'>
-              <input value={question.title} type="text" className="half-width form-control col-3" placeholder='Question' 
-              onChange={(e) => {}}
+              <input id={question._id} value={question.title} type="text" className="half-width form-control col-3" placeholder='Question' 
+              onChange={handleUpdateQuestionTitle}
               />
               <select id={index} value={question.questionType} className='half-width form-control col-6' defaultValue="mcq"
-              onChange={handleDropdownChange}>
+              readOnly>
               <option value="mcq">Multiple Choice Question</option>
               <option value="truefalse">True/False</option>
               <option value="fillintheblank">Fill in the Blank</option>
@@ -103,8 +133,8 @@ function QuizQuestionEditor() {
         <div className='question-editor'>
         <div>
             <div className='padding header'>
-              <input type="text" className="half-width form-control col-3" placeholder='Question' 
-              onChange={(e) => {}}
+              <input id={component.props.quizQuestion._id} type="text" className="half-width form-control col-3" placeholder='Question' 
+              onChange={(e) => {handleUpdateQuestionTitle(e)}}
               />
               <select id={index} className='half-width form-control col-6' defaultValue="mcq"
               onChange={handleDropdownChange}>

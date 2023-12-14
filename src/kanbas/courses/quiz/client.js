@@ -39,3 +39,10 @@ export const updateQuestion = async(questionId, question) => {
   .put(`${QUIZ_URL}/question/${questionId}`, question);
   return response.data;
 }
+
+export const addQuestion = async(quizId, question) => {
+  question._id = null;
+  const response = await axios
+  .post(`${QUIZ_URL}/${quizId}/question`, question);
+  return response.data;
+}
