@@ -17,6 +17,7 @@ function Assignments() {
     service.findAssignmentsForCourse(courseId)
       .then((assignments) =>
         dispatch(setAssignments(assignments))
+        
     );
     // eslint-disable-next-line 
   }, [courseId]);

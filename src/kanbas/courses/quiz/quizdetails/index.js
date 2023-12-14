@@ -45,9 +45,9 @@ function QuizDetails() {
           <button onClick={handlePublishOrUnpublishQuiz} className="btn btn-light quiz-details-button float-end">
             {quiz.published ? "Unpublish" : "Publish"}
           </button>
-          <button className="btn btn-light quiz-details-button float-end">
+          <Link to={`/Kanbas/Courses/${courseId}/Quizzes/Preview/${quizId}`} className="btn btn-light quiz-details-button float-end">
             Preview
-          </button>
+          </Link>
           <Link to={`/Kanbas/Courses/${courseId}/Quizzes/Edit/${quizId}`} className="btn btn-light quiz-details-button float-end">
             <CiEdit/>
             Edit
