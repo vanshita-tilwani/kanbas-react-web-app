@@ -33,3 +33,9 @@ export const findQuestionsForQuiz = async(quizId) => {
     .get(`${QUIZ_URL}/${quizId}/questions`);
   return response.data;
 }
+
+export const updateQuestion = async(questionId, question) => {
+  const response = await axios
+  .put(`${QUIZ_URL}/question/${questionId}`, question);
+  return response.data;
+}

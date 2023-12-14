@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as client from "../client";
 import { Link } from "react-router-dom";
 import { FaPlus, FaSearch} from "react-icons/fa";
@@ -14,7 +14,7 @@ function QuizQuestionEditor() {
     const { courseId } = useParams();
     const { quizId } = useParams();
     const dispatch = useDispatch();
-    
+    const navigate = useNavigate();
     const [dynamicComponents, setDynamicComponents] = useState([]);
 
     const renderSelectedComponent = (selectedComponent,question) => {
@@ -46,6 +46,19 @@ function QuizQuestionEditor() {
       // Update the state to add the new component to the list
       setDynamicComponents([...dynamicComponents, renderSelectedComponent()]);
     };
+
+    const handleSave = () => {
+      questions.map(async(question) => {
+        if(question._id){
+          //update /api/quiz/question/:qid
+          await client.updateQuestion(question._id, question)
+        }
+        else {
+
+        }
+      });
+      navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
+    }
   
     useEffect(() => {
       client.findQuestionsForQuiz(quizId)
@@ -53,7 +66,7 @@ function QuizQuestionEditor() {
           dispatch(setQuestions(questions))
       );
       // eslint-disable-next-line 
-    }, [quizId]);
+    }, []);
 
     
     const questions = useSelector((state) => state.quizReducer.questions);
@@ -134,7 +147,7 @@ function QuizQuestionEditor() {
                   changed</label>
               </div>
               <div className="col-6 align-self-center">
-                <button className="btn btn-danger float-end quiz-question-button save-button">
+                <button onClick={handleSave} className="btn btn-danger float-end quiz-question-button save-button">
                   Save
                 </button>
                 <button className="btn btn-light quiz-question-button float-end">

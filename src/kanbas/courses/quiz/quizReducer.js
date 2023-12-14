@@ -16,7 +16,7 @@ const initialState = {
           availableUntil: moment().utc().format('YYYY-MM-DD'),
         },
   questions: [],
-  question: {}
+  question: {},
 };
 
 

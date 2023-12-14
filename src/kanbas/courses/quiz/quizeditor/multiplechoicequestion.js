@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import "./quizquestionseditor"
 import { FaPlus} from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
+import { setQuestions  } from '../quizReducer';
 
 const MultipleChoiceQuestion = ({quizQuestion}) => {
   // eslint-disable-next-line
+  const dispatch = useDispatch();
   var correctAnswer = quizQuestion.correctAnswers == null ? "" : quizQuestion.correctAnswers[0];
   const [question, setQuestion] = useState(quizQuestion);
   const [answers, setAnswers] = useState(quizQuestion.possibleAnswers);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(quizQuestion.possibleAnswers.indexOf(correctAnswer));
+
+  const questions = useSelector((state) => state.quizReducer.questions);
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value);
@@ -39,6 +44,36 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
     setCorrectAnswerIndex(index);
   };
 
+  const handleQuestionTextChange = (e) => {
+    
+    //questions.map(question => question._id === e.target.id ? "questionText" :e.target.value);
+    var updatedQuestions = questions.map(({questionText, ...question}) => ({
+      ...question,
+      questionText: question._id === e.target.id ? e.target.value : questionText,
+    }));
+    var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
+    dispatch(setQuestions(updatedQuestions));
+    setQuestion(updatedQuestion);
+
+  }
+  function getUpdatedAnswers(possibleAnswers, index, newValue){
+    return possibleAnswers.map((answer, i) => {
+      return i === index ? newValue : answer
+    })
+  }
+
+  const handleAnswerTextChange = (e, index) => {
+    var updatedQuestions = questions.map(({possibleAnswers, ...question}) => ({
+      ...question,
+      possibleAnswers: question._id === e.target.id ? getUpdatedAnswers(possibleAnswers, index, e.target.value) : possibleAnswers
+     
+    }));
+
+    var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
+    dispatch(setQuestions(updatedQuestions));
+    setQuestion(updatedQuestion);
+    setAnswers(updatedQuestion.possibleAnswers)
+  }
   
   return (
     <div className='mcq-editor'>
@@ -48,7 +83,8 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Question : </label>
-          <textarea className='form-control col-12' type="textarea" value={question?.questionText} onChange={handleQuestionChange} />
+          <textarea id={question._id} className='form-control col-12' type="textarea" value={question?.questionText} 
+          onChange={handleQuestionTextChange} />
 
         </div>
         <div className='padding'>
@@ -68,10 +104,11 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
             </div>
             <div className='col-9' style={{display: "flex"}}>
               <input
+              id={question._id}
               type="text"
               className='form-control half-width'
               value={answer}
-              onChange={(e) => handleAnswerChange(e, index)}
+              onChange={(e) => handleAnswerTextChange(e, index)}
               />
               <button className='form-control btn btn-danger padding half-width' style={{ marginLeft: 'auto'}} onClick={() => handleRemoveAnswer(index)}>
               Remove
