@@ -64,18 +64,18 @@ function QuizQuestionEditor() {
   
     const handleUpdateQuestionTitle = (e) => {
       var existingQuestions = questions.filter(q => q._id === e.target.id);
+      var updatedQuestions = [];
       if(existingQuestions.length === 0){
-        var updatedQuestions = [...questions, {title : e.target.value, _id :e.target.id, questionType: "mcq" }]
+        updatedQuestions = [...questions, {title : e.target.value, _id :e.target.id, questionType: "mcq" }]
       }
       else {
     //questions.map(question => question._id === e.target.id ? "questionText" :e.target.value);
-        var updatedQuestions = questions.map(({title, ...question}) => ({
+        updatedQuestions = questions.map(({title, ...question}) => ({
         ...question,
         title: question._id === e.target.id ? e.target.value : title,
         }));
       
       }
-      var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
       dispatch(setQuestions(updatedQuestions));
     }
 

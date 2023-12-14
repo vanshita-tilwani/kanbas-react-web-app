@@ -8,15 +8,12 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
   // eslint-disable-next-line
   const dispatch = useDispatch();
   var correctAnswer = quizQuestion.correctAnswers == null ? "" : quizQuestion.correctAnswers[0];
-  const [question, setQuestion] = useState(quizQuestion);
+  const [question, ] = useState(quizQuestion);
   const [answers, setAnswers] = useState(quizQuestion.possibleAnswers);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(quizQuestion.possibleAnswers ? quizQuestion.possibleAnswers.indexOf(correctAnswer) : -1);
 
   const questions = useSelector((state) => state.quizReducer.questions);
 
-  const handleQuestionChange = (e) => {
-    setQuestion(e.target.value);
-  };
 
   const handleAddAnswer = (e) => {
     const newAnswers = [...answers, e.target.value];
@@ -26,8 +23,6 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
       possibleAnswers: question._id === e.target.id ? newAnswers : possibleAnswers
      
     }));
-
-    var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
     dispatch(setQuestions(updatedQuestions));
     //setQuestion(updatedQuestion);
     
@@ -62,38 +57,36 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
       ...question,
       correctAnswers: question._id === e.target.id ? [question.possibleAnswers[index]] : correctAnswers,
     }));
-    var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
     dispatch(setQuestions(updatedQuestions));
-    //setQuestion(updatedQuestion);
   };
 
   const handleQuestionTextChange = (e) => {
     
     var existingQuestions = questions.filter(q => q._id === e.target.id);
+    var updatedQuestions = [];
     if(existingQuestions.length === 0){
-      var updatedQuestions = [...questions, {questionText : e.target.value, _id :e.target.id, questionType: "mcq" }]
+      updatedQuestions = [...questions, {questionText : e.target.value, _id :e.target.id, questionType: "mcq" }]
     }
     else {
     //questions.map(question => question._id === e.target.id ? "questionText" :e.target.value);
-      var updatedQuestions = questions.map(({questionText, ...question}) => ({
+      updatedQuestions = questions.map(({questionText, ...question}) => ({
         ...question,
         questionText: question._id === e.target.id ? e.target.value : questionText,
       }));
       
     }
-    var updatedQuestion = updatedQuestions.filter(question => question._id === e.target.id)[0];
     dispatch(setQuestions(updatedQuestions));
-    //setQuestion(updatedQuestion);
 
   }
 
   const handleAnswerTextChange = (e, index) => {
     var existingQuestions = questions.filter(q => q._id === e.target.id);
+    var updatedQuestions =[];
     if(existingQuestions.length === 0){
-      var updatedQuestions = [...questions, {possibleAnswers : [e.target.value], _id :e.target.id, questionType: "mcq" }]
+      updatedQuestions = [...questions, {possibleAnswers : [e.target.value], _id :e.target.id, questionType: "mcq" }]
     }
     else {
-      var updatedQuestions = questions.map(({possibleAnswers, ...question}) => ({
+      updatedQuestions = questions.map(({possibleAnswers, ...question}) => ({
         ...question,
         possibleAnswers: question._id === e.target.id ? getUpdatedAnswers(possibleAnswers, index, e.target.value) : possibleAnswers
      
