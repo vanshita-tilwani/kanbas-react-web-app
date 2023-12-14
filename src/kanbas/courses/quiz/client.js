@@ -41,8 +41,15 @@ export const updateQuestion = async(questionId, question) => {
 }
 
 export const addQuestion = async(quizId, question) => {
-  question._id = null;
+  
   const response = await axios
   .post(`${QUIZ_URL}/${quizId}/question`, question);
+  return response.data;
+}
+
+export const deleteQuestion = async(questionId) => {
+  
+  const response = await axios
+  .delete(`${QUIZ_URL}/question/${questionId}`);
   return response.data;
 }

@@ -79,6 +79,16 @@ function QuizQuestionEditor() {
       dispatch(setQuestions(updatedQuestions));
     }
 
+    const handleDeleteQuestion = async(e) => {
+      var updatedQuestions = questions.filter(question => question !== e.target.id);
+      dispatch(setQuestions(updatedQuestions));
+      if(!e.target.id.includes("newquestion"))
+      {
+        await client.deleteQuestion(e.target.id);
+      }
+      navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
+    }
+
     useEffect(() => {
       setQuestions([]);
       client.findQuestionsForQuiz(quizId)
@@ -119,7 +129,11 @@ function QuizQuestionEditor() {
               <option value="truefalse">True/False</option>
               <option value="fillintheblank">Fill in the Blank</option>
               </select>
-
+              <button id={question._id} 
+              onClick={handleDeleteQuestion}
+              className='form-control btn btn-danger padding half-width' style={{ marginLeft: 'auto'}} >
+                Remove
+              </button>
             </div>
             
           </div>
@@ -142,6 +156,11 @@ function QuizQuestionEditor() {
               <option value="truefalse">True/False</option>
               <option value="fillintheblank">Fill in the Blank</option>
               </select>
+              <button id={component.props.quizQuestion._id} 
+              onClick={handleDeleteQuestion}
+              className='form-control btn btn-danger padding half-width' style={{ marginLeft: 'auto'}} >
+                Remove
+              </button>
 
             </div>
             
