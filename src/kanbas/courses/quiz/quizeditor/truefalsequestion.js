@@ -1,18 +1,45 @@
 import React, { useState } from 'react';
 import "./quizquestionseditor.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { setQuestions  } from '../quizReducer';
 
 const TrueFalseQuestion = ({quizQuestion}) => {
+  const dispatch = useDispatch();
   // eslint-disable-next-line
   const [question, setQuestion] = useState(quizQuestion);
   // eslint-disable-next-line
   const [correctAnswer, setCorrectAnswer] = useState(quizQuestion.correctAnswers[0]);
+  const questions = useSelector((state) => state.quizReducer.questions);
 
-  const handleQuestionChange = (e) => {
-    setQuestion(e.target.value);
+  const handleQuestionTextChange = (e) => {
+    var existingQuestions = questions.filter(q => q._id === e.target.id);
+    var updatedQuestions = [];
+    if(existingQuestions.length === 0){
+      updatedQuestions = [...questions, 
+        {questionText : e.target.value, _id :e.target.id, questionType: "truefalse" }]
+    }
+    else {
+    //questions.map(question => question._id === e.target.id ? "questionText" :e.target.value);
+      updatedQuestions = questions.map(({questionText, questionType, ...question}) => ({
+        ...question,
+        questionText: question._id === e.target.id ? e.target.value : questionText,
+        questionType: question._id === e.target.id ? "truefalse" : questionType,
+      }));
+      
+    }
+    var updatedQuestion = updatedQuestions.filter(q => q._id === e.target.id)[0];
+    dispatch(setQuestions(updatedQuestions));  
+    setQuestion(updatedQuestion);
   };
+    
 
-  const handleSelectCorrectAnswer = (value) => {
-    setCorrectAnswer(value);
+  const handleSelectCorrectAnswer = (e, value) => {
+    setCorrectAnswer(value + '');
+    var updatedQuestions = questions.map(({correctAnswers, ...question}) => ({
+      ...question,
+      correctAnswers: question._id === e.target.id ? [value + ''] : correctAnswers,
+    }));
+    dispatch(setQuestions(updatedQuestions));
   };
   
   return (
@@ -23,7 +50,7 @@ const TrueFalseQuestion = ({quizQuestion}) => {
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Question : </label>
-          <textarea className='form-control col-12' type="textarea" value={question.questionText} onChange={handleQuestionChange} />
+          <textarea id={question._id} className='form-control col-12' type="textarea" value={question.questionText} onChange={handleQuestionTextChange} />
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Answers : </label>
@@ -32,23 +59,25 @@ const TrueFalseQuestion = ({quizQuestion}) => {
         <div className='padding' key="trueOption">
           <div className='half-width col-3'>
             <input
+            id={question._id}
             type="radio"
             name="correctAnswer"
             value="true"
-            checked={correctAnswer}
-            onChange={() => handleSelectCorrectAnswer(true)}
+            checked={correctAnswer  === 'true'}
+            onChange={(e) => handleSelectCorrectAnswer(e, true)}
           />
-            <label className='padding' style={{color : (correctAnswer ? "green" : "black")}}>True</label>
+            <label className='padding' style={{color : (( correctAnswer === 'true') ? "green" : "black")}}>True</label>
           </div>
           <div className='half-width col-3'>
             <input
+            id={question._id}
             type="radio"
             name="correctAnswer"
             value="false"
-            checked={correctAnswer}
-            onChange={() => handleSelectCorrectAnswer(false)}
+            checked={correctAnswer === 'false'}
+            onChange={(e) => handleSelectCorrectAnswer(e, false)}
             />
-            <label className='padding' style={{color : (correctAnswer ? "green" : "black")}}>False</label>
+            <label className='padding' style={{color : ((correctAnswer === 'false') ? "green" : "black")}}>False</label>
           </div>
         </div>
         </div>

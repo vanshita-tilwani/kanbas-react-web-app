@@ -8,7 +8,7 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
   // eslint-disable-next-line
   const dispatch = useDispatch();
   var correctAnswer = quizQuestion.correctAnswers == null ? "" : quizQuestion.correctAnswers[0];
-  const [question, ] = useState(quizQuestion);
+  const [question, setQuestion] = useState(quizQuestion);
   const [answers, setAnswers] = useState(quizQuestion.possibleAnswers);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(quizQuestion.possibleAnswers ? quizQuestion.possibleAnswers.indexOf(correctAnswer) : -1);
 
@@ -24,7 +24,6 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
      
     }));
     dispatch(setQuestions(updatedQuestions));
-    //setQuestion(updatedQuestion);
     
   };
 
@@ -75,7 +74,9 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
       }));
       
     }
+    var updatedQuestion = updatedQuestions.filter(q => q._id === e.target.id)[0];
     dispatch(setQuestions(updatedQuestions));
+    setQuestion(updatedQuestion);
 
   }
 
@@ -121,7 +122,8 @@ const MultipleChoiceQuestion = ({quizQuestion}) => {
         </div>
         <div className='padding'>
           <label className="xsmall-font bold col-3">Question : </label>
-          <textarea id={question._id} className='form-control col-12' type="textarea" value={question?.questionText} 
+          <textarea id={question._id} className='form-control col-12' type="textarea" 
+          value={question?.questionText} 
           onChange={handleQuestionTextChange} />
 
         </div>
