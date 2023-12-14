@@ -39,7 +39,7 @@ function QuizDetailsEditor() {
     } else {
       await handleAddQuiz();
     }
-    navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
+    navigate(`/Kanbas/Courses/${courseId}/Quizzes/Details/${quizId}`);
   };
 
   const handleSaveAndPublish = async() => {

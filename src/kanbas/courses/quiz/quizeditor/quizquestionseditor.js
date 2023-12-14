@@ -27,7 +27,7 @@ function QuizQuestionEditor() {
         case 'fillintheblank':
           return <FillInTheBlank quizQuestion = {question}/>;
         default:
-          return <MultipleChoiceQuestion quizQuestion = {{_id : "newquestion" + Date.now(), possibleAnswers : ['','',''], correctAnswers : []}}/>;
+          return <MultipleChoiceQuestion quizQuestion = {{_id : "newquestion" + Date.now(), possibleAnswers : [''], correctAnswers : []}}/>;
       }
     };
 
