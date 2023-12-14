@@ -69,6 +69,11 @@ function QuizList() {
     navigate(`/Kanbas/Courses/${courseId}/Quizzes/Edit/${quizId}`)
   }
 
+  const handleQuizPreview = (quiz, quizId) => {
+    dispatch(setQuiz(quiz))
+    navigate(`/Kanbas/Courses/${courseId}/Quizzes/Preview/${quizId}`)
+  }
+
   const quizzes = useSelector((state) => state.quizReducer.quizzes);
   const dispatch = useDispatch();
   return (
@@ -126,7 +131,8 @@ function QuizList() {
                   onEdit = {() => {handleQuizEdit(quiz, quiz._id)}}
                   isPublished = {quiz.published}
                   onPublish = {() => {handlePublishOrUnpublishQuiz(quiz, true)}}
-                  onUnpublish = {() => {handlePublishOrUnpublishQuiz(quiz, false)}}/>
+                  onUnpublish = {() => {handlePublishOrUnpublishQuiz(quiz, false)}}
+                  onPreview = {() => {handleQuizPreview(quiz, quiz._id)}}/>
               </div>
             </li>
           ))}

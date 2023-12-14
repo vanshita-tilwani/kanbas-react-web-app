@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import {FaEllipsisVertical} from "react-icons/fa6"
-const ThreeDotsMenu = ({onEdit, onDelete, onPublish, onUnpublish, isPublished}) => {
+const ThreeDotsMenu = ({onEdit, onDelete, onPublish, onUnpublish, isPublished, onPreview}) => {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -14,6 +14,7 @@ const ThreeDotsMenu = ({onEdit, onDelete, onPublish, onUnpublish, isPublished}) 
         <Dropdown.Item as="button" onClick={onEdit}>Edit</Dropdown.Item>
         <Dropdown.Item as="button" onClick={onDelete}>Delete</Dropdown.Item>
         <Dropdown.Item as="button" onClick={isPublished ? onUnpublish : onPublish}>{isPublished ? "Unpublish" : "Publish"}</Dropdown.Item>
+        <Dropdown.Item as="button" onClick={onPreview}>Preview</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

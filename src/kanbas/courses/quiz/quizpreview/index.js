@@ -54,7 +54,7 @@ function QuizPreview() {
       <hr />
       <div>
       <div style={{ display: 'flex' }}>
-        {currentIndex != -1 && (
+        {currentIndex !== -1 && (
           <div style={{ flex: 1 }}>
           <div className="question_holder">
             <div className="question">
@@ -119,9 +119,9 @@ function QuizPreview() {
                   </div>
                 )}
               </div>
-              <div className="previous-next-buttons padding-between-answer" style={{display: "flex"}}>
-                <button className="form-control" onClick={handlePrevious}>Previous</button>
-        <button className="form-control" onClick={handleNext}>Next</button>
+              <div className="previous-next-buttons padding-between-answer">
+                <button className="form-control width-25" onClick={handlePrevious}>Previous</button>
+        <button className="form-control width-25" onClick={handleNext}>Next</button>
                 </div>
             </div>
           </div>
