@@ -101,9 +101,12 @@ function QuizList() {
               <div className="assignment-text">Assignment Quizzes</div>
             </div>
           </li>
-          {quizzes
-      .filter((quiz) => quiz.course === courseId)
-      .map((quiz)  => (
+          {[...quizzes]
+      .sort(function compare(a, b) {
+        var dateA = new Date(a.availableFrom);
+        var dateB = new Date(b.availableFrom);
+        return dateA - dateB;
+      }).map((quiz)  => (
             <li key={"item_" + quiz._id} className="list-group-item assignment-list-item assignment-list-item-green-border">
               <div className="d-flex flex-row align-items-center">
                 <FaRocket style={{color : "green"}} className="icon-margin" />
